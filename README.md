@@ -29,12 +29,7 @@ And import the following Header file
 #import "QwikJson.h"
 ```
 
-This pod will work if your project uses objective-c or Swift.
-- For best results with an objective-c Project, add the SeaseAssist.h import into your .pch file and you will not need to import SeaseAssist into each of your classes that references it.
-- For Similiar result with Swift, you should NOT include the use_frameworks! in your pod file and add a bridging header that includes the library. If you must use_frameworks!, then you need to include QwikJson in any class that uses its functions.
--- add a new header file to yoour project named ProjectName-Bridging-Header.h
--- add '#import <QwikJson/QwikJson>' to your header file
--- in your Target Build settings -> Swift Compiler Code Generation -> Objective-C Bridging Header, add a reference to the newly created file. Should be [ProjectName/ProjectName-Bridging-Header.h]
+This pod will whether if your project uses objective-c or Swift.
 
 ## Usage
 
