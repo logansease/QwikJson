@@ -1,14 +1,19 @@
 //
 //  QJViewController.m
-//  QwikJson
+//  QJsonable
 //
-//  Created by Logan Sease on 01/27/2016.
-//  Copyright (c) 2016 Logan Sease. All rights reserved.
+//  Created by Logan Sease on 12/14/2015.
+//  Copyright (c) 2015 Logan Sease. All rights reserved.
 //
 
 #import "QJViewController.h"
+#import "Restaurant.h"
+#import "Menu.h"
+#import "MenuItem.h"
 
 @interface QJViewController ()
+
+@property(nonatomic,strong)Restaurant * restaurant;
 
 @end
 
@@ -17,8 +22,52 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self addData];
+    
+    //write to prefs
+    [self.restaurant writeToPreferencesWithKey:@"data"];
+    
+    //serialize to dictionary and output
+    NSDictionary * dictionary = [self.restaurant toDictionary];
+    self.label.text = [NSString stringWithFormat:@"%@",dictionary];
 }
+
+-(IBAction)makeMagic:(id)sender
+{
+    //read from prefs
+    self.restaurant = [Restaurant readFromPrefencesWithKey:@"data"];
+    
+    //serialize
+    NSDictionary * dictionary = [self.restaurant toDictionary];
+    
+    //deserialize
+    self.restaurant = [Restaurant objectFromDictionary:dictionary];
+    
+    //serialize again
+    dictionary = [self.restaurant toDictionary];
+    
+    //output
+    self.label.text = [NSString stringWithFormat:@"RESERIALIZED!:\n%@",dictionary];
+}
+
+-(void)addData
+{
+    Restaurant * rest = [Restaurant objectWithId:@"1"];
+    rest.name = @"Testaurant";
+    rest.createdAt = [[DBTimeStamp alloc]initWithDate:[NSDate date]];
+    self.restaurant= rest;
+    
+    Menu * menu = [Menu objectWithId:@"2"];
+    menu.name = @"Food Menu";
+    rest.menus = @[menu];
+    
+    MenuItem * item = [MenuItem objectWithId:@"3"];
+    item.name = @"Yummy";
+    item.desc = @"Good stuff!";
+    menu.menuItems = @[item];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

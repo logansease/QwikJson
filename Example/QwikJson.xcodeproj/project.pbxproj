@@ -12,15 +12,18 @@
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
-		6003F59E195388D20070C39A /* QJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* QJAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* QJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* QJViewController.m */; };
-		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		7037F5CD1C5914D100ED1A95 /* QJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7037F5C81C5914D100ED1A95 /* QJAppDelegate.m */; };
+		7037F5CE1C5914D100ED1A95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7037F5C91C5914D100ED1A95 /* Main.storyboard */; };
+		7037F5CF1C5914D100ED1A95 /* QJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7037F5CB1C5914D100ED1A95 /* QJViewController.m */; };
+		7037F5D01C5914D100ED1A95 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7037F5CC1C5914D100ED1A95 /* Images.xcassets */; };
+		7037F5D71C5914E100ED1A95 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7037F5D21C5914E100ED1A95 /* MenuItem.m */; };
+		7037F5D81C5914E100ED1A95 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 7037F5D41C5914E100ED1A95 /* Restaurant.m */; };
+		7037F5D91C5914E100ED1A95 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7037F5D61C5914E100ED1A95 /* Menu.m */; };
 		9AF8B4A189CAFC2BA3B83697 /* Pods_QwikJson_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A89F4423907A6912330F5BC /* Pods_QwikJson_Tests.framework */; };
 		D139951EAA34D04D56723C90 /* Pods_QwikJson_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 563141807BA1971D9B751151 /* Pods_QwikJson_Example.framework */; };
 /* End PBXBuildFile section */
@@ -48,19 +51,25 @@
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* QwikJson-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QwikJson-Prefix.pch"; sourceTree = "<group>"; };
-		6003F59C195388D20070C39A /* QJAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QJAppDelegate.h; sourceTree = "<group>"; };
-		6003F59D195388D20070C39A /* QJAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QJAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* QJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QJViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* QJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QJViewController.m; sourceTree = "<group>"; };
-		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* QwikJson_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QwikJson_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		7037F5C71C5914D100ED1A95 /* QJAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJAppDelegate.h; sourceTree = "<group>"; };
+		7037F5C81C5914D100ED1A95 /* QJAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJAppDelegate.m; sourceTree = "<group>"; };
+		7037F5C91C5914D100ED1A95 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		7037F5CA1C5914D100ED1A95 /* QJViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJViewController.h; sourceTree = "<group>"; };
+		7037F5CB1C5914D100ED1A95 /* QJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJViewController.m; sourceTree = "<group>"; };
+		7037F5CC1C5914D100ED1A95 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7037F5D11C5914E100ED1A95 /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
+		7037F5D21C5914E100ED1A95 /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
+		7037F5D31C5914E100ED1A95 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
+		7037F5D41C5914E100ED1A95 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
+		7037F5D51C5914E100ED1A95 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		7037F5D61C5914E100ED1A95 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		7A89F4423907A6912330F5BC /* Pods_QwikJson_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QwikJson_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8B44079CDD3F94FB37EF8BD7 /* QwikJson.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = QwikJson.podspec; path = ../QwikJson.podspec; sourceTree = "<group>"; };
 		9F2617FAFDE457C67EAA872C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		AFCB905F9A234A57066EDEFD /* Pods-QwikJson_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QwikJson_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QwikJson_Tests/Pods-QwikJson_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,12 +150,13 @@
 		6003F593195388D20070C39A /* Example for QwikJson */ = {
 			isa = PBXGroup;
 			children = (
-				6003F59C195388D20070C39A /* QJAppDelegate.h */,
-				6003F59D195388D20070C39A /* QJAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* QJViewController.h */,
-				6003F5A6195388D20070C39A /* QJViewController.m */,
-				6003F5A8195388D20070C39A /* Images.xcassets */,
+				7037F5DA1C5914E700ED1A95 /* Model */,
+				7037F5C71C5914D100ED1A95 /* QJAppDelegate.h */,
+				7037F5C81C5914D100ED1A95 /* QJAppDelegate.m */,
+				7037F5C91C5914D100ED1A95 /* Main.storyboard */,
+				7037F5CA1C5914D100ED1A95 /* QJViewController.h */,
+				7037F5CB1C5914D100ED1A95 /* QJViewController.m */,
+				7037F5CC1C5914D100ED1A95 /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			name = "Example for QwikJson";
@@ -191,6 +201,19 @@
 				BC52115F8F1C870A779169D3 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		7037F5DA1C5914E700ED1A95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7037F5D11C5914E100ED1A95 /* MenuItem.h */,
+				7037F5D21C5914E100ED1A95 /* MenuItem.m */,
+				7037F5D31C5914E100ED1A95 /* Restaurant.h */,
+				7037F5D41C5914E100ED1A95 /* Restaurant.m */,
+				7037F5D51C5914E100ED1A95 /* Menu.h */,
+				7037F5D61C5914E100ED1A95 /* Menu.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +299,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
-				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				7037F5D01C5914D100ED1A95 /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				7037F5CE1C5914D100ED1A95 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,9 +413,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F59E195388D20070C39A /* QJAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* QJViewController.m in Sources */,
+				7037F5CF1C5914D100ED1A95 /* QJViewController.m in Sources */,
+				7037F5D81C5914E100ED1A95 /* Restaurant.m in Sources */,
+				7037F5D91C5914E100ED1A95 /* Menu.m in Sources */,
+				7037F5D71C5914E100ED1A95 /* MenuItem.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				7037F5CD1C5914D100ED1A95 /* QJAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +542,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QwikJson/QwikJson-Prefix.pch";
 				INFOPLIST_FILE = "QwikJson/QwikJson-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,6 +559,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QwikJson/QwikJson-Prefix.pch";
 				INFOPLIST_FILE = "QwikJson/QwikJson-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

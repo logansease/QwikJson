@@ -7,34 +7,40 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "QwikJson"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of QwikJson."
+s.name             = "QwikJson"
+s.version          = "0.3.0"
+s.summary          = "A deep serialization and deserialization base object."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
-  s.description      = <<-DESC
-                       DESC
+#   * Finally, don't worry about the indent, CocoaPods strips it!
+s.description      = <<-DESC
+In our ReSTful API world, we are constantly passing JSON objects to our api and receiving them back. Constantly serializating these objects to and from json string and dictionaries can be cumbersome and can make your model classes and data services start to fill up with boiler plate parsing code.
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/QwikJson"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
-  s.author           = { "Logan Sease" => "logan.sease@qonceptual.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/QwikJson.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+To solve this, I introduce QwikJson. An amazingly powerful and simple library for serializing and deserializing json objects.
 
-  s.platform     = :ios, '7.0'
-  s.requires_arc = true
+Simple have your model classes extend the QwikJson class and the world shall become your oyster.
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'QwikJson' => ['Pod/Assets/*.png']
-  }
+QwikJson makes converting objects to dictionaries and arrays of dictionaries a breeze. It includes support for nested model objects, nested array model objects, multiple date serializers, easily storing and loading objects from user defaults and converting your array arrays and dictionaries to json Strings and vice versa.
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+DESC
+
+s.homepage         = "https://github.com/qonceptual/QwikJson"
+s.license          = 'MIT'
+s.author           = { "Logan Sease" => "logan.sease@qonceptual.com" }
+s.source           = { :git => "https://github.com/qonceptual/QwikJson.git", :tag => s.version.to_s }
+
+s.platform     = :ios, '7.0'
+s.requires_arc = true
+
+s.source_files = 'Pod/Classes/**/*'
+s.resource_bundles = {
+'QwikJson' => ['Pod/Assets/*.png']
+}
+
+# s.public_header_files = 'Pod/Classes/**/*.h'
+# s.frameworks = 'UIKit', 'MapKit'
+# s.dependency 'AFNetworking', '~> 2.3'
 end
