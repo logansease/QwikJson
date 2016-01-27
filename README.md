@@ -158,6 +158,16 @@ Note that you can customize the date formats by calling setDateFormat on the dat
 
 Inside this repo and in the android directory, you will also find a very similar class, QwikJson.java that offers very similar functionality for Android and other Java Platforms.
 
+## Further Notes
+
+Another essential part of restful requests is parsing the response dictionaries (JSON) into our model objects, and passing model objects into our requests.
+Consider using QwikJson (previosly named QJSonable) in combination with this library to complete your toolset.
+https://github.com/qonceptual/QJsonable
+
+Also, checkout the SeaseAssist pod for a ton of great helpers to make writing your iOS code even simpler!
+https://github.com/logansease/SeaseAssist
+
+
 ## Author
 
 Logan Sease, logan.sease@qonceptual.com
