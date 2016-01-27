@@ -64,16 +64,16 @@ Use Nested Objects (even nested arrays) use custom date serlizers
 //restaurant.m
 +(Class)classForKey:(NSString*)key
 {
-if([key isEqualToString:@"menus"])
-{
-return [Menu class];
-}
-if([key isEqualToString:@"createdAt"])
-{
-return [DBTimeStamp class];
-}
+    if([key isEqualToString:@"menus"])
+    {
+        return [Menu class];
+    }
+    if([key isEqualToString:@"createdAt"])
+    {
+        return [DBTimeStamp class];
+    }
 
-return [super classForKey:key];
+    return [super classForKey:key];
 }
 
 ```
@@ -82,34 +82,34 @@ Customize field names if they don't match the database
 ```objective-c
 +(Class)classForKey:(NSString*)key
 {
-if([key isEqualToString:@"menu_items"] || [key isEqualToString:@"menuItems"])
-{
-return [MenuItem class];
-}
-return [super classForKey:key];
+    if([key isEqualToString:@"menu_items"] || [key isEqualToString:@"menuItems"])
+    {
+        return [MenuItem class];
+    }
+    return [super classForKey:key];
 }
 
 //override in subclass to perform some custom deserizliation or change property keys
 -(void)writeObjectFrom:(NSDictionary*)inputDictionary forKey:(NSString*)key toProperty:(NSString*)property
 {
-//adjust the property name since the database is formatted with _'s instead of camel case
-if([property isEqualToString:@"menu_items"])
-{
-property = @"menuItems";
-}
+    //adjust the property name since the database is formatted with _'s instead of camel case
+    if([property isEqualToString:@"menu_items"])
+    {
+        property = @"menuItems";
+    }
 
-[super writeObjectFrom:inputDictionary forKey:key toProperty:property];
+    [super writeObjectFrom:inputDictionary forKey:key toProperty:property];
 }
 
 //override in subclass to specify a new key or perform some custom action on serialize
 -(void)serializeObject:(NSObject*)object withKey:(NSString*)key toDictionary:(NSMutableDictionary*)dictionary
 {
-//adjust the property name since the database is formatted with _'s instead of camel case
-if([key isEqualToString:@"menuItems"])
-{
-key = @"menu_items";
-}
-[super serializeObject:object withKey:key toDictionary:dictionary];
+    //adjust the property name since the database is formatted with _'s instead of camel case
+    if([key isEqualToString:@"menuItems"])
+    {
+        key = @"menu_items";
+    }
+    [super serializeObject:object withKey:key toDictionary:dictionary];
 }
 ```
 
@@ -149,7 +149,7 @@ Convert to and from StringsQwi
 ####DBTime            
 -12:00:00
 
-Note that you can customize the date formats by calling
+Note that you can customize the date formats by calling setDateFormat on the date class.
 ```objective-c
 [DBDate setDateFormat:@"MM/DD/YYYY"];
 ```
