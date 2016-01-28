@@ -134,20 +134,20 @@ Convert to and from StringsQwi
 
 
 ## Supported Field Types Types
--Boolean
--NSString
--NSArray
--NSNumber
+- Boolean
+- NSString
+- NSArray
+- NSNumber
 
 ### Custom Date Serializers
 ####DBDate            
--2015-12-30
+- 2015-12-30
 ####DBDateTime        
--2015-01-01T10:15:30 
+- 2015-01-01T10:15:30 
 ####DBDateTimeStamp   
--0312345512
+- 0312345512
 ####DBTime            
--12:00:00
+- 12:00:00
 
 Note that you can customize the date formats by calling setDateFormat on the date class.
 ```objective-c
@@ -160,8 +160,9 @@ Inside this repo and in the android directory, you will also find a very similar
 
 ## Further Notes
 
-Another essential part of restful requests is parsing the response dictionaries (JSON) into our model objects, and passing model objects into our requests.
-Consider using QwikJson (previosly named QJSonable) in combination with this library to complete your toolset.
+In addition to parsing and serializing JSON, the other essential pieice of communicatiing with Restful APIs is a good
+networking library.
+Consider using QwikHttp in combination with this library to complete your toolset.
 https://github.com/qonceptual/QJsonable
 
 Also, checkout the SeaseAssist pod for a ton of great helpers to make writing your iOS code even simpler!
