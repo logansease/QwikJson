@@ -10,9 +10,9 @@ In our ReSTful API world, we are constantly passing JSON objects to our api and 
 
 To solve this, I introduce QwikJson. An amazingly powerful and simple library for serializing and deserializing json objects.
 
-Simple have your model classes extend the QwikJson class and the world shall become your oyster.
+Simply have your model classes extend QwikJson and the world shall become your oyster.
 
-QwikJson makes converting objects to dictionaries and arrays of dictionaries a breeze. It includes support for nested model objects, nested array model objects, multiple date serializers, easily storing and loading objects from user defaults and converting your array arrays and dictionaries to json Strings and vice versa.
+QwikJson makes converting objects to dictionaries and arrays of dictionaries (and Vice Versa) a breeze. It includes support for nested model objects, nested array model objects, multiple styles of dates and times, simple storage to NSUserDefaults and conversion to and from JSON Strings.
 
 
 ## Installation
@@ -29,7 +29,7 @@ And import the following Header file
 #import "QwikJson.h"
 ```
 
-This pod will whether if your project uses objective-c or Swift.
+This pod is written in Objective-C but works great with Swift projects as well.
 
 ## Usage
 
@@ -51,7 +51,7 @@ menu = [Menu objectFromDictionary:dictionary];
 dictionary = [menu toDictionary];
 ```
 
-Use Nested Objects (even nested arrays) use custom date serlizers
+Use Nested Objects (even nested arrays) and custom date serlizers
 ```objective-c
 //restaurant.h
 @interface Restaurant : QwikJson
@@ -119,7 +119,7 @@ Write straight to preferences
 self.restaurant = [Restaurant readFromPrefencesWithKey:@"data"];
 ```
 
-Convert to and from StringsQwi
+Convert to and from Strings
 ```objective-c
 @interface NSDictionary (QwikJson)
 -(NSString*)toJsonString;
@@ -139,15 +139,19 @@ Convert to and from StringsQwi
 - NSArray
 - NSNumber
 
-### Custom Date Serializers
+### Custom Date Serializers, handle parsing various date / time formats
+
 ####DBDate            
-- 2015-12-30
+2015-12-30
+
 ####DBDateTime        
-- 2015-01-01T10:15:30 
+2015-01-01T10:15:30 
+
 ####DBDateTimeStamp   
-- 0312345512
+0312345512
+
 ####DBTime            
-- 12:00:00
+12:00:00
 
 Note that you can customize the date formats by calling setDateFormat on the date class.
 ```objective-c
@@ -163,7 +167,7 @@ Inside this repo and in the android directory, you will also find a very similar
 In addition to parsing and serializing JSON, the other essential pieice of communicatiing with Restful APIs is a good
 networking library.
 Consider using QwikHttp in combination with this library to complete your toolset.
-https://github.com/qonceptual/QJsonable
+https://github.com/qonceptual/QwikHttp
 
 Also, checkout the SeaseAssist pod for a ton of great helpers to make writing your iOS code even simpler!
 https://github.com/logansease/SeaseAssist
