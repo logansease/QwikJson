@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "QwikJson"
-s.version          = "0.3.0"
+s.version          = "1.0.0"
 s.summary          = "A deep serialization and deserialization base object."
 
 # This description is used to generate tags and improve search results.
@@ -32,6 +32,7 @@ s.license          = 'MIT'
 s.author           = { "Logan Sease" => "logan.sease@qonceptual.com" }
 s.source           = { :git => "https://github.com/qonceptual/QwikJson.git", :tag => s.version.to_s }
 
+s.tvos.deployment_target = '9.0'
 s.platform     = :ios, '7.0'
 s.requires_arc = true
 

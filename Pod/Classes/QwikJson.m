@@ -318,6 +318,14 @@
             }
         }
         
+        //if this is supposed to be an NSString, but the api is returning it as an NSNumber, convert it to a string
+        //this happens in the case of the id field
+        else if(objectClass == [NSString class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSNumber class]])
+        {
+            NSNumber * idNumber = [inputDictionary valueForKey:key];
+            [self setValue:[idNumber stringValue] forKey:key];
+        }
+        
         //otherwise, this is just a standard setter method, so set the value
         //only if there is a setter available for the property
         else if([self respondsToSelector:NSSelectorFromString(property)]){
