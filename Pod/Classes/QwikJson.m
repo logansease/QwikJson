@@ -327,8 +327,7 @@
         }
         
         //otherwise, this is just a standard setter method, so set the value
-        //only if there is a setter available for the property
-        else if([self respondsToSelector:NSSelectorFromString(property)]){
+        else{
             if(![[inputDictionary valueForKey:key] isEqual:[NSNull null]])
             {
                 [self setValue:[inputDictionary valueForKey:key] forKey:property];
@@ -341,7 +340,9 @@
         
     }
     @catch (NSException *exception) {
-        NSLog(@"There was an error parsing %@ with key %@, error = %@",[objectClass description], key, exception.description);
+        //swallow the exception. No need for tons of logging. This will happen if the property doesn't have a setter,
+        //which can be common
+        //NSLog(@"There was an error parsing %@ with key %@, error = %@",[objectClass description], key, exception.description);
     }
 
 }

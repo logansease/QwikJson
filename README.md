@@ -164,7 +164,7 @@ Inside this repo and in the android directory, you will also find a very similar
 
 ## Further Notes
 
-In addition to parsing and serializing JSON, the other essential pieice of communicatiing with Restful APIs is a good
+In addition to parsing and serializing JSON, the other essential pieice of communicatiing with RESTful APIs is a good
 networking library.
 Consider using QwikHttp in combination with this library to complete your toolset.
 https://github.com/qonceptual/QwikHttp
