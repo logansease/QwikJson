@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "QwikJson"
-s.version          = "1.0.3"
+s.version          = "1.0.4"
 s.summary          = "A deep serialization and deserialization base object."
 
 # This description is used to generate tags and improve search results.
@@ -40,9 +40,6 @@ s.watchos.deployment_target = '2.0'
 s.requires_arc = true
 
 s.source_files = 'Pod/Classes/**/*'
-s.resource_bundles = {
-'QwikJson' => ['Pod/Assets/*.png']
-}
 
 # s.public_header_files = 'Pod/Classes/**/*.h'
 # s.frameworks = 'UIKit', 'MapKit'
