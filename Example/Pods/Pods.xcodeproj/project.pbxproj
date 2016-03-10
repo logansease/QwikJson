@@ -14,6 +14,8 @@
 		2DCC227448A2DD69207FC875C647EA57 /* QwikJson.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54B7FA1F412331F878CC62B69A751390 /* QwikJson.bundle */; };
 		53FFBCD4AEC9AE7ADEEB008A96B0A970 /* QwikJson-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF31DE5478767373207F914ED0FC978 /* QwikJson-dummy.m */; };
 		54F26DB75F26F0251D9D6F54D1FFCFBE /* Pods-QwikJson_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D516535AFDC80F6FCEA3DDCC4C6B895 /* Pods-QwikJson_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		70E0A0411C91D47B00FC42F5 /* QwikJsonManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 70E0A03F1C91D47B00FC42F5 /* QwikJsonManagedObject.h */; };
+		70E0A0421C91D47B00FC42F5 /* QwikJsonManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0A0401C91D47B00FC42F5 /* QwikJsonManagedObject.m */; };
 		7C76A1174B411F96BA352AF77BE80254 /* QwikJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 9136237BB8405735089FD371A8536B40 /* QwikJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82C802265442DBF64C11F45713936717 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		A833D82B4F39875ACDE4EAFFC4B8B620 /* Pods-QwikJson_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 467115F60E41BEB375423BB040F28C3B /* Pods-QwikJson_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -67,6 +69,8 @@
 		5CF31DE5478767373207F914ED0FC978 /* QwikJson-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QwikJson-dummy.m"; sourceTree = "<group>"; };
 		6AD2222C1E852FA258DEC2EE799490D5 /* Pods-QwikJson_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QwikJson_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6F09692E9CB5BD99BBD07495CCEF8368 /* Pods-QwikJson_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QwikJson_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		70E0A03F1C91D47B00FC42F5 /* QwikJsonManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QwikJsonManagedObject.h; sourceTree = "<group>"; };
+		70E0A0401C91D47B00FC42F5 /* QwikJsonManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QwikJsonManagedObject.m; sourceTree = "<group>"; };
 		7D516535AFDC80F6FCEA3DDCC4C6B895 /* Pods-QwikJson_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QwikJson_Example-umbrella.h"; sourceTree = "<group>"; };
 		83B0B85848EF848B79A597362D0F1E7C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9136237BB8405735089FD371A8536B40 /* QwikJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QwikJson.h; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 		6E5C45EFD7246361133EA36500B84581 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				70E0A03F1C91D47B00FC42F5 /* QwikJsonManagedObject.h */,
+				70E0A0401C91D47B00FC42F5 /* QwikJsonManagedObject.m */,
 				59C00779E935EB24A861EE42AFC16579 /* NSArrayDictionary+QJson.h */,
 				EF42DAB61C695CA3FD3117E3AA886780 /* NSArrayDictionary+QJson.m */,
 				9136237BB8405735089FD371A8536B40 /* QwikJson.h */,
@@ -273,6 +279,7 @@
 				FC5BBFF53880A34964458174073A4C2F /* NSArrayDictionary+QJson.h in Headers */,
 				173C393228A6A828C6D9E8D8CAB884B6 /* QwikJson-umbrella.h in Headers */,
 				7C76A1174B411F96BA352AF77BE80254 /* QwikJson.h in Headers */,
+				70E0A0411C91D47B00FC42F5 /* QwikJsonManagedObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +373,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -427,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70E0A0421C91D47B00FC42F5 /* QwikJsonManagedObject.m in Sources */,
 				BAA17E1E33C4D52A005520F794833E5A /* NSArrayDictionary+QJson.m in Sources */,
 				53FFBCD4AEC9AE7ADEEB008A96B0A970 /* QwikJson-dummy.m in Sources */,
 				E6DF1A0956B9941208A844B5464C0BF7 /* QwikJson.m in Sources */,
@@ -485,6 +493,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_QwikJson_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -513,6 +522,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/QwikJson/QwikJson.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = QwikJson;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -541,6 +551,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/QwikJson/QwikJson.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = QwikJson;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -584,6 +595,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_QwikJson_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -611,6 +623,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -653,6 +666,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_QwikJson_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -683,6 +697,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_QwikJson_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

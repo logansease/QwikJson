@@ -158,6 +158,9 @@ Note that you can customize the date formats by calling setDateFormat on the dat
 [DBDate setDateFormat:@"MM/DD/YYYY"];
 ```
 
+##NSManagedObject Support
+If you are using CoreData and would like to use QwikJson, you may also simply import and extend QwikJsonManagedObject instead of QwikJson
+
 ## Android
 
 Inside this repo and in the android directory, you will also find a very similar class, QwikJson.java that offers very similar functionality for Android and other Java Platforms.
