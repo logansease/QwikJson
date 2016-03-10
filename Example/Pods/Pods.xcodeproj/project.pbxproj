@@ -14,7 +14,7 @@
 		2DCC227448A2DD69207FC875C647EA57 /* QwikJson.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54B7FA1F412331F878CC62B69A751390 /* QwikJson.bundle */; };
 		53FFBCD4AEC9AE7ADEEB008A96B0A970 /* QwikJson-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF31DE5478767373207F914ED0FC978 /* QwikJson-dummy.m */; };
 		54F26DB75F26F0251D9D6F54D1FFCFBE /* Pods-QwikJson_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D516535AFDC80F6FCEA3DDCC4C6B895 /* Pods-QwikJson_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		70E0A0411C91D47B00FC42F5 /* QwikJsonManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 70E0A03F1C91D47B00FC42F5 /* QwikJsonManagedObject.h */; };
+		70E0A0411C91D47B00FC42F5 /* QwikJsonManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 70E0A03F1C91D47B00FC42F5 /* QwikJsonManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		70E0A0421C91D47B00FC42F5 /* QwikJsonManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0A0401C91D47B00FC42F5 /* QwikJsonManagedObject.m */; };
 		7C76A1174B411F96BA352AF77BE80254 /* QwikJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 9136237BB8405735089FD371A8536B40 /* QwikJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		82C802265442DBF64C11F45713936717 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
