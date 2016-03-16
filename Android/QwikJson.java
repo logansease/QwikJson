@@ -1,4 +1,4 @@
-package com.q.QJsonable;
+package com.q.QwikJson;
 
 import android.app.ProgressDialog;
 import android.util.Log;
@@ -33,7 +33,7 @@ import java.util.Date;
  * This is a base api data object that all tables or models should extend if you wish to
  * pass them to the API. It will handle serializing and deserializing to json
  */
-public abstract class QJsonable implements Serializable {
+public abstract class QwikJson implements Serializable {
 
 
     /********** HELPER METHODS *************/
@@ -414,7 +414,7 @@ public abstract class QJsonable implements Serializable {
      * @param <T> The class that this is being converted to will be the return type
      * @return an object of the desired class
      */
-    public static<T extends BaseApiDataObject> T fromJSON(JSONObject json, Class resultClass)
+    public static<T extends QwikJson> T fromJSON(JSONObject json, Class resultClass)
     {
         return (T)gson.fromJson(json.toString(),resultClass);
     }
@@ -426,7 +426,7 @@ public abstract class QJsonable implements Serializable {
      * @param <T> the class to convert to
      * @return an arrayList of the disired objects. Those that could not convert will not return
      */
-    public static<T extends BaseApiDataObject> ArrayList<T> fromJSONArray(JSONArray jsonArray, Class resultClass)
+    public static<T extends QwikJson> ArrayList<T> fromJSONArray(JSONArray jsonArray, Class resultClass)
     {
         // //since this conversion takes an unfortunate long amount of time, show the loading dialog
         // ProgressDialog loading = new ProgressDialog(MainApplication.getApplication().getCurrentActivity());
@@ -460,7 +460,7 @@ public abstract class QJsonable implements Serializable {
      * @param <T> the class to convert to
      * @return an array list of the objects
      */
-    public static<T extends BaseApiDataObject> JSONArray toJSONArray(ArrayList<T> array, Class resultClass)
+    public static<T extends QwikJson> JSONArray toJSONArray(ArrayList<T> array, Class resultClass)
     {
         JSONArray result = new JSONArray();
 
