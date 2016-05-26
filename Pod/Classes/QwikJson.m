@@ -254,7 +254,13 @@ static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
 //this exists so that a subclass might override this and specify a new key or perform some custom action.
 -(void)serializeObject:(NSObject*)object withKey:(NSString*)key toDictionary:(NSMutableDictionary*)dictionary
 {
+    @try{
     [dictionary setObject:object forKey:key];
+    }
+    @catch(NSException * e)
+    {
+        NSLog(@"Error Setting %@: %@",key,e);
+    }
 }
 
 
