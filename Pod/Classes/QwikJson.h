@@ -55,10 +55,7 @@
 +(id)objectWithId:(NSString*)objectId; //empty object with id=objectId
 
 //override this method to specify field renaming mappings
-+(void)setApiToObjectMapping;
-
-//this is a helper, but should not be called or access directly in your subclass
-+(void)setApiToObjectMapping:(NSDictionary<NSString*,NSString*>*)mapping;
++(NSDictionary<NSString*,NSString*>*)apiToObjectMapping;
 
 @end
 

@@ -12,9 +12,6 @@
 
 @implementation QwikJsonManagedObject
 
-
-static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
-
 /*
  * create a test object. This is used by the test data service. override this in your subclass
  */
@@ -39,16 +36,11 @@ static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
 
 #pragma mark setup
 
-+(void)setApiToObjectMapping;
++(NSDictionary<NSString*,NSString*>*)apiToObjectMapping;
 {
     //this should be overridden in the subclass
+    return nil;
 }
-
-+(void)setApiToObjectMapping:(NSDictionary<NSString*,NSString*>*)mapping
-{
-    apiToObjectNameMappings = mapping;
-}
-
 
 #pragma mark serialization Helpers
 
@@ -60,22 +52,28 @@ static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
  */
 -(void)setValue:(id)value forKey:(NSString *)key
 {
-    //remove any null values
-    if([value isKindOfClass:[NSArray class]])
-    {
-        NSMutableArray * newArray = [NSMutableArray array];
-        for(NSObject * obj in (NSArray*)value)
+    @try{
+        //remove any null values
+        if([value isKindOfClass:[NSArray class]])
         {
-            if(obj != nil && ![obj isKindOfClass:[NSNull class]])
+            NSMutableArray * newArray = [NSMutableArray array];
+            for(NSObject * obj in (NSArray*)value)
             {
-                [newArray addObject:obj];
+                if(obj != nil && ![obj isKindOfClass:[NSNull class]])
+                {
+                    [newArray addObject:obj];
+                }
             }
+            
+            [super setValue:newArray forKey:key];
         }
-        
-        [super setValue:newArray forKey:key];
+        else{
+            [super setValue:value forKey:key];
+        }
     }
-    else{
-        [super setValue:value forKey:key];
+    @catch(NSException * e)
+    {
+        NSLog(@"Error Setting %@: %@", key, e);
     }
     
 }
@@ -203,16 +201,12 @@ static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
 //serialization for specific properties
 -(void)addProperty:(NSString*)key toDictionary:(NSMutableDictionary*)dict
 {
-    
     //see if we need to rename our key
-    if(!apiToObjectNameMappings)
-    {
-        [[self class] setApiToObjectMapping];
-    }
+    NSDictionary * nameMappings = [[self class]apiToObjectMapping];
     NSString * renamedKey = key;
-    if([apiToObjectNameMappings.allValues containsObject:key])
+    if([nameMappings.allValues containsObject:key])
     {
-        renamedKey = [apiToObjectNameMappings allKeysForObject:key].firstObject;
+        renamedKey = [nameMappings allKeysForObject:key].firstObject;
     }
     
     //if this object is a serializable object, serialize it and add it to the dictionary
@@ -250,7 +244,13 @@ static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
 //this exists so that a subclass might override this and specify a new key or perform some custom action.
 -(void)serializeObject:(NSObject*)object withKey:(NSString*)key toDictionary:(NSMutableDictionary*)dictionary
 {
-    [dictionary setObject:object forKey:key];
+    @try{
+        [dictionary setObject:object forKey:key];
+    }
+    @catch(NSException * e)
+    {
+        NSLog(@"Error Setting %@: %@",key,e);
+    }
 }
 
 
@@ -317,14 +317,11 @@ static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
     Class objectClass = [[self class] classForKey:key];
     
     //see if we need to rename our key
-    if(!apiToObjectNameMappings)
-    {
-        [[self class] setApiToObjectMapping];
-    }
+    NSDictionary * nameMappings = [[self class]apiToObjectMapping];
     NSString * renamedKey = key;
-    if([apiToObjectNameMappings.allKeys containsObject:key])
+    if([nameMappings.allKeys containsObject:key])
     {
-        renamedKey = [apiToObjectNameMappings valueForKey:key];
+        renamedKey = [nameMappings valueForKey:key];
     }
     
     @try {
@@ -484,6 +481,5 @@ static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
     }
     return [super isEqual:other];
 }
-
 
 @end

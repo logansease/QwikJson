@@ -10,10 +10,10 @@
 
 @implementation MenuItem
 
-+(void)setApiToObjectMapping
++(NSDictionary<NSString*,NSString*>*)apiToObjectMapping
 {
     //specify custom field mappings for qwikJsonObjects
-    [self setApiToObjectMapping:@{@"desc": @"descriptionText"}];
+    return @{@"desc": @"descriptionText"};
 }
 
 @end

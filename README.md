@@ -78,16 +78,8 @@ Use Nested Objects (even nested arrays) and custom date serlizers
 
 ```
 
-Customize field names if they don't match the database
+Perform Specialized Logic during serialization or deserialization.
 ```objective-c
-+(Class)classForKey:(NSString*)key
-{
-    if([key isEqualToString:@"menu_items"] || [key isEqualToString:@"menuItems"])
-    {
-        return [MenuItem class];
-    }
-    return [super classForKey:key];
-}
 
 //override in subclass to perform some custom deserizliation or change property keys
 -(void)writeObjectFrom:(NSDictionary*)inputDictionary forKey:(NSString*)key toProperty:(NSString*)property
@@ -112,6 +104,16 @@ Customize field names if they don't match the database
     [super serializeObject:object withKey:key toDictionary:dictionary];
 }
 ```
+
+Define a property map to name your object fields differently for your model objects vs the API. This may be necessary if you use a reserved keyword like "description" or if your api returns underscore cased fields
+```
++(NSDictionary<NSString*,NSString*>*)apiToObjectMapping
+{
+    //specify custom field mappings for qwikJsonObjects
+    return @{@"description": @"descriptionText"};
+}
+```
+
 
 Write straight to preferences
 ```objective-c
