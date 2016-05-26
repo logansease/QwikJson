@@ -58,6 +58,7 @@ static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
  */
 -(void)setValue:(id)value forKey:(NSString *)key
 {
+    @try{
     //remove any null values
     if([value isKindOfClass:[NSArray class]])
     {
@@ -74,6 +75,11 @@ static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
     }
     else{
         [super setValue:value forKey:key];
+    }
+    }
+    @catch(NSException * e)
+    {
+        NSLog(@"Error Setting %@: %@", key, e);
     }
     
 }
