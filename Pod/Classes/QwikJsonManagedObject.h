@@ -35,10 +35,10 @@
 //may also be useful if the api is returning a Number ID field but you want to store it as a String
 +(Class)classForKey:(NSString*)key;
 
-//override in subclass to perform some custom deserizliation or change property keys
+/*** override in subclass to perform some custom deserizliation or change property keys ***/
 -(void)writeObjectFrom:(NSDictionary*)inputDictionary forKey:(NSString*)key toProperty:(NSString*)property;
 
-//override in subclass to specify a new key or perform some custom action on serialize
+/*** override in subclass to specify a new key or perform some custom action on serialize ***/
 -(void)serializeObject:(NSObject*)object withKey:(NSString*)key toDictionary:(NSMutableDictionary*)dictionary;
 /**
  * Override this in your subclasses to allow for any special data types to be set into the object,
@@ -47,5 +47,11 @@
  * make sure you call the super method if you are not handling this yourself!
  */
 -(void)setValue:(id)value forKey:(NSString *)key;
+
+/**** override this method to specify field renaming mappings ***/
++(void)setApiToObjectMapping;
+
+//this is a helper, but should not be called or access directly in your subclass
++(void)setApiToObjectMapping:(NSDictionary<NSString*,NSString*>*)mapping;
 
 @end

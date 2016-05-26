@@ -63,7 +63,7 @@
     
     MenuItem * item = [MenuItem objectWithId:@"3"];
     item.name = @"Yummy";
-    item.desc = @"Good stuff!";
+    item.descriptionText = @"Good stuff!";
     menu.menuItems = @[item];
 }
 

@@ -10,7 +10,7 @@
 
 @interface MenuItem : QwikJson
 @property(nonatomic,strong)NSString * name;
-@property(nonatomic,strong)NSString * image_url;
-@property(nonatomic,strong)NSString * desc;
+@property(nonatomic,strong)NSString * imageUrl;
+@property(nonatomic,strong)NSString * descriptionText;
 
 @end

@@ -7,12 +7,19 @@
 //
 
 #import "QJAppDelegate.h"
+#import "MenuItem.h"
+#import "Menu.h"
 
 @implementation QJAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    //specify custom field mappings for qwikJsonObjects
+    [MenuItem setApiToObjectMapping:@{@"desc": @"descriptionText"}];
+    [Menu setApiToObjectMapping:@{@"menu_items": @"menuItems"}];
+    
     return YES;
 }
 

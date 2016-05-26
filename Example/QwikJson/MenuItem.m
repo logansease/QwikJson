@@ -10,4 +10,10 @@
 
 @implementation MenuItem
 
++(void)setApiToObjectMapping
+{
+    //specify custom field mappings for qwikJsonObjects
+    [self setApiToObjectMapping:@{@"desc": @"descriptionText"}];
+}
+
 @end

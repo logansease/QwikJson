@@ -12,6 +12,8 @@
 
 @implementation QwikJson
 
+static NSDictionary<NSString*,NSString*> * apiToObjectNameMappings;
+
 /*
  * create a test object. This is used by the test data service. override this in your subclass
  */
@@ -33,8 +35,20 @@
     return object;
 }
 
-#pragma mark serialization Helpers
 
+#pragma mark setup
+
++(void)setApiToObjectMapping;
+{
+    //this should be overridden in the subclass
+}
+
++(void)setApiToObjectMapping:(NSDictionary<NSString*,NSString*>*)mapping
+{
+    apiToObjectNameMappings = mapping;
+}
+
+#pragma mark serialization Helpers
 
 /**
  * Override this in your subclasses to allow for any special data types to be set into the object,
@@ -187,10 +201,22 @@
 //serialization for specific properties
 -(void)addProperty:(NSString*)key toDictionary:(NSMutableDictionary*)dict
 {
+    
+    //see if we need to rename our key
+    if(!apiToObjectNameMappings)
+    {
+        [[self class] setApiToObjectMapping];
+    }
+    NSString * renamedKey = key;
+    if([apiToObjectNameMappings.allValues containsObject:key])
+    {
+        renamedKey = [apiToObjectNameMappings allKeysForObject:key].firstObject;
+    }
+    
     //if this object is a serializable object, serialize it and add it to the dictionary
     if([[self valueForKey:key] respondsToSelector:@selector(toDictionary)])
     {
-        [self serializeObject:[[self valueForKey:key]toDictionary] withKey:key toDictionary:dict];
+        [self serializeObject:[[self valueForKey:key]toDictionary] withKey:renamedKey toDictionary:dict];
     }
     
     //if this is an array of db objects that is not empty then serialize the array and set it
@@ -202,20 +228,20 @@
         {
             [serializedArray addObject:[nonSerializedObject toDictionary]];
         }
-        [self serializeObject:serializedArray withKey:key toDictionary:dict];
+        [self serializeObject:serializedArray withKey:renamedKey toDictionary:dict];
     }
     
     //if this is a specialized dbField object as defined by implementing the dbField protocol, such as DBDate
     //use the protocol conversion methods to convert and save the value
     else if([[self valueForKey:key] respondsToSelector:@selector(toDbFormattedString)])
     {
-        [self serializeObject:[[self valueForKey:key]toDbFormattedString]  withKey:key toDictionary:dict];
+        [self serializeObject:[[self valueForKey:key]toDbFormattedString]  withKey:renamedKey toDictionary:dict];
     }
     
     //otherwise just set it
     else if([self valueForKey:key])
     {
-        [self serializeObject:[self valueForKey:key] withKey:key toDictionary:dict];
+        [self serializeObject:[self valueForKey:key] withKey:renamedKey toDictionary:dict];
     }
 }
 
@@ -288,6 +314,17 @@
     //determine the type of object we are going to be setting
     Class objectClass = [[self class] classForKey:key];
     
+    //see if we need to rename our key
+    if(!apiToObjectNameMappings)
+    {
+        [[self class] setApiToObjectMapping];
+    }
+    NSString * renamedKey = key;
+    if([apiToObjectNameMappings.allKeys containsObject:key])
+    {
+        renamedKey = [apiToObjectNameMappings valueForKey:key];
+    }
+    
     @try {
         
         //NSObject * value = [inputDictionary objectForKey:key];
@@ -297,7 +334,7 @@
         if(objectClass != nil && [[inputDictionary objectForKey:key]isKindOfClass:[NSDictionary class]])
         {
             QwikJson * subObject = [objectClass objectFromDictionary:[inputDictionary objectForKey:key]];
-            [self setValue:subObject forKey:property];
+            [self setValue:subObject forKey:renamedKey];
         }
         
         //if this is an array then parse that object array and set it
@@ -305,7 +342,7 @@
         {
             NSArray * jsonArray = [inputDictionary objectForKey:key];
             NSArray * objectArray = [[self class] arrayForJsonArray:jsonArray ofClass:objectClass];
-            [self setValue:objectArray forKey:property];
+            [self setValue:objectArray forKey:renamedKey];
         }
         
         //if this is a specific dbField type then parse this using the dbField parsing protocol
@@ -314,7 +351,7 @@
             id valueObject = [objectClass objectFromDbString:[inputDictionary objectForKey:key]];
             if(valueObject)
             {
-                [self setValue:valueObject forKey:property];
+                [self setValue:valueObject forKey:renamedKey];
             }
         }
         
@@ -323,18 +360,27 @@
         else if(objectClass == [NSString class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSNumber class]])
         {
             NSNumber * idNumber = [inputDictionary valueForKey:key];
-            [self setValue:[idNumber stringValue] forKey:key];
+            [self setValue:[idNumber stringValue] forKey:renamedKey];
+        }
+        
+        //if this is supposed to be an NSNumber, but the api is returning it as an NSString, convert it to a NSNumber
+        else if(objectClass == [NSNumber class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSString class]])
+        {
+            NSString * idString = [inputDictionary valueForKey:key];
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            f.numberStyle = NSNumberFormatterDecimalStyle;
+            [self setValue:[f numberFromString:idString]  forKey:renamedKey];
         }
         
         //otherwise, this is just a standard setter method, so set the value
         else{
             if(![[inputDictionary valueForKey:key] isEqual:[NSNull null]])
             {
-                [self setValue:[inputDictionary valueForKey:key] forKey:property];
+                [self setValue:[inputDictionary valueForKey:key] forKey:renamedKey];
             }
             else
             {
-                [self setValue:nil forKey:property];
+                [self setValue:nil forKey:renamedKey];
             }
         }
         
