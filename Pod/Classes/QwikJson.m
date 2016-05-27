@@ -674,7 +674,7 @@ static NSString * dbTimeFormat = @"HH:mm:ss";
     if([super init] && date)
     {
         self.date = date;
-        return self
+        return self;
     }
     return nil;
 }
