@@ -313,9 +313,6 @@
  */
 -(void)writeObjectFrom:(NSDictionary*)inputDictionary forKey:(NSString*)key toProperty:(NSString*)property
 {
-    //determine the type of object we are going to be setting
-    Class objectClass = [[self class] classForKey:key];
-    
     //see if we need to rename our key
     NSDictionary * nameMappings = [[self class]apiToObjectMapping];
     NSString * renamedKey = key;
@@ -323,6 +320,9 @@
     {
         renamedKey = [nameMappings valueForKey:key];
     }
+    
+    //determine the type of object we are going to be setting
+    Class objectClass = [[self class] classForKey:renamedKey];
     
     @try {
         

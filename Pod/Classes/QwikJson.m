@@ -313,8 +313,6 @@
  */
 -(void)writeObjectFrom:(NSDictionary*)inputDictionary forKey:(NSString*)key toProperty:(NSString*)property
 {
-    //determine the type of object we are going to be setting
-    Class objectClass = [[self class] classForKey:key];
     
     //see if we need to rename our key
     NSDictionary * nameMappings = [[self class]apiToObjectMapping];
@@ -323,6 +321,9 @@
     {
         renamedKey = [nameMappings valueForKey:key];
     }
+    
+    //determine the type of object we are going to be setting
+    Class objectClass = [[self class] classForKey:renamedKey];
     
     @try {
         
@@ -523,11 +524,12 @@ static NSString * dbDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
 -(id)initWithDate:(NSDate*)date
 {
-    if([super init])
+    if([super init] && date)
     {
         self.date = date;
+        return self;
     }
-    return self;
+    return nil;
 }
 
 -(id)initWithDBDate:(DBDate*)dbDate andDBTime:(DBTime*)dbTime
@@ -583,11 +585,12 @@ static NSString * dbDateFormat = @"yyyy-MM-dd";
 
 -(id)initWithDate:(NSDate*)date
 {
-    if([super init])
+    if([super init] && date)
     {
         self.date = date;
+        return self;
     }
-    return self;
+    return nil;
 }
 
 @end
@@ -626,11 +629,12 @@ static NSString * dbTimeFormat = @"HH:mm:ss";
 }
 -(id)initWithDate:(NSDate*)date
 {
-    if([super init])
+    if([super init] && date)
     {
         self.date = date;
+        return self;
     }
-    return self;
+    return nil;
 }
 
 @end
@@ -667,11 +671,12 @@ static NSString * dbTimeFormat = @"HH:mm:ss";
 }
 -(id)initWithDate:(NSDate*)date
 {
-    if([super init])
+    if([super init] && date)
     {
         self.date = date;
+        return self
     }
-    return self;
+    return nil;
 }
 
 @end
