@@ -73,7 +73,10 @@
     }
     @catch(NSException * e)
     {
-        NSLog(@"Error Setting %@: %@", key, e);
+        if([self respondsToSelector:NSSelectorFromString(key)])
+        {
+            NSLog(@"Error Setting %@: %@", key, e);
+        }
     }
     
 }
