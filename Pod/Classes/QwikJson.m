@@ -36,11 +36,19 @@
 
 #pragma mark setup
 
-+(NSDictionary<NSString*,NSString*>*)apiToObjectMapping;
++(NSDictionary<NSString*,NSString*>*)apiToObjectMapping
 {
     //this should be overridden in the subclass
     return nil;
 }
+
++(NSArray<NSString*>*)transientProperties
+{
+    //this should be overridden in the subclass
+    return nil;
+}
+
+
 
 #pragma mark serialization Helpers
 
@@ -210,6 +218,12 @@
     if([nameMappings.allValues containsObject:key])
     {
         renamedKey = [nameMappings allKeysForObject:key].firstObject;
+    }
+    
+    //if we are supposed to ignore this field, do not serialize it
+    if([[[self class] transientProperties] containsObject:renamedKey])
+    {
+        return;
     }
     
     //if this object is a serializable object, serialize it and add it to the dictionary

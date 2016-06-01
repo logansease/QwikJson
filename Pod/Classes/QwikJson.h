@@ -57,6 +57,9 @@
 //override this method to specify field renaming mappings
 +(NSDictionary<NSString*,NSString*>*)apiToObjectMapping;
 
+//return field names here that should not be written during serialization
++(NSArray<NSString*>*)transientProperties;
+
 @end
 
 

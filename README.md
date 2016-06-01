@@ -114,6 +114,13 @@ Define a property map to name your object fields differently for your model obje
 }
 ```
 
+Define an array of transient properties to specify properties that should not be written during serialization
+```
++(NSArray<NSString*>*)transientProperties
+{
+    return @{@"someCalculatedFieldName"};
+}
+```
 
 Write straight to preferences
 ```objective-c
