@@ -143,10 +143,13 @@ Convert to and from Strings
 
 
 ## Supported Field Types Types
-- Boolean
-- NSString
-- NSArray
-- NSNumber
+- Boolean  / Bool
+- NSString / String
+- NSArray  / []
+- NSNumber 
+
+* Note, if you are using Swift and using booleans, use Bool. DO NOT use Bool? since optional booleans cannot be expressed in objective c
+
 
 ### Custom Date Serializers, handle parsing various date / time formats
 
