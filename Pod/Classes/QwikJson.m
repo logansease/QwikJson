@@ -221,7 +221,7 @@
     }
     
     //if we are supposed to ignore this field, do not serialize it
-    if([[[self class] transientProperties] containsObject:renamedKey])
+    if([[[self class] transientProperties] containsObject:renamedKey] || [kDefaultTransientProperties containsObject:renamedKey])
     {
         return;
     }

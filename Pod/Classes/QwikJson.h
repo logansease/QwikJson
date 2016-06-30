@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "NSArrayDictionary+QJson.h"
 
+
+//these are properties that are declared on all objects. Since we don't want to pass them into the api
+//they are always transient. If you wish to pass one of these variables in, simply rename the field using
+//the apiToObjectMapping method
+#define kDefaultTransientProperties @[@"superclass", @"hash", @"debugDescription", @"description"]
+
 @interface QwikJson : NSObject//<NSCoding>
 //note in order for serialization to work, I am moving all properties to the specific class
 //and leaving all, including the ID out of the base class.

@@ -114,7 +114,11 @@ Define a property map to name your object fields differently for your model obje
 }
 ```
 
-Define an array of transient properties to specify properties that should not be written during serialization
+Define an array of transient properties to specify properties that should not be written during serialization.
+Note that some fields are marked transient by default. These are as follows:
+#define kDefaultTransientProperties @[@"superclass", @"hash", @"debugDescription", @"description"]
+If you wish to pass one of these variables in, simply rename the field using the apiToObjectMapping method
+
 ```
 +(NSArray<NSString*>*)transientProperties
 {
