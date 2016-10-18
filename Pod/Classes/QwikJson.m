@@ -229,7 +229,7 @@
     //if this object is a serializable object, serialize it and add it to the dictionary
     if([[self valueForKey:key] respondsToSelector:@selector(toDictionary)])
     {
-        [self serializeObject:[[self valueForKey:key]toDictionary] withKey:renamedKey toDictionary:dict];
+        [self serializeObject:[[self valueForKey:key]toDictionary] withApiKey:renamedKey fromKey:key toDictionary:dict];
     }
     
     //if this is an array of db objects that is not empty then serialize the array and set it
@@ -241,32 +241,32 @@
         {
             [serializedArray addObject:[nonSerializedObject toDictionary]];
         }
-        [self serializeObject:serializedArray withKey:renamedKey toDictionary:dict];
+        [self serializeObject:serializedArray withApiKey:renamedKey fromKey:key toDictionary:dict];
     }
     
     //if this is a specialized dbField object as defined by implementing the dbField protocol, such as DBDate
     //use the protocol conversion methods to convert and save the value
     else if([[self valueForKey:key] respondsToSelector:@selector(toDbFormattedString)])
     {
-        [self serializeObject:[[self valueForKey:key]toDbFormattedString]  withKey:renamedKey toDictionary:dict];
+        [self serializeObject:[[self valueForKey:key]toDbFormattedString] withApiKey:renamedKey fromKey:key toDictionary:dict];
     }
     
     //otherwise just set it
     else if([self valueForKey:key])
     {
-        [self serializeObject:[self valueForKey:key] withKey:renamedKey toDictionary:dict];
+        [self serializeObject:[self valueForKey:key] withApiKey:renamedKey fromKey:key toDictionary:dict];
     }
 }
 
 //this exists so that a subclass might override this and specify a new key or perform some custom action.
--(void)serializeObject:(NSObject*)object withKey:(NSString*)key toDictionary:(NSMutableDictionary*)dictionary
+-(void)serializeObject:(NSObject*)object withApiKey:(NSString*)apiKey fromKey:(NSString*)objectKey toDictionary:(NSMutableDictionary*)dictionary
 {
     @try{
-    [dictionary setObject:object forKey:key];
+    [dictionary setObject:object forKey:apiKey];
     }
     @catch(NSException * e)
     {
-        NSLog(@"Error Setting %@: %@",key,e);
+        NSLog(@"Error Setting %@: %@",apiKey,e);
     }
 }
 

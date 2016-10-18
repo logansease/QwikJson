@@ -94,14 +94,14 @@ Perform Specialized Logic during serialization or deserialization.
 }
 
 //override in subclass to specify a new key or perform some custom action on serialize
--(void)serializeObject:(NSObject*)object withKey:(NSString*)key toDictionary:(NSMutableDictionary*)dictionary
+-(void)serializeObject:(NSObject*)object withApiKey:(NSString*)apiKey fromKey:(NSString*)objectKey toDictionary:(NSMutableDictionary*)dictionary
 {
     //adjust the property name since the database is formatted with _'s instead of camel case
-    if([key isEqualToString:@"menuItems"])
+    if([objectKey isEqualToString:@"menuItems"])
     {
-        key = @"menu_items";
+        apiKey = @"menu_items";
     }
-    [super serializeObject:object withKey:key toDictionary:dictionary];
+    [super serializeObject:object withApiKey:apiKey fromKey:objectKey toDictionary:dictionary];
 }
 ```
 

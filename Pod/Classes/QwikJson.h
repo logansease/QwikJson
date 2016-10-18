@@ -43,7 +43,7 @@
 -(void)writeObjectFrom:(NSDictionary*)inputDictionary forKey:(NSString*)key toProperty:(NSString*)property;
 
 //override in subclass to specify a new key or perform some custom action on serialize
--(void)serializeObject:(NSObject*)object withKey:(NSString*)key toDictionary:(NSMutableDictionary*)dictionary;
+-(void)serializeObject:(NSObject*)object withApiKey:(NSString*)apiKey fromKey:(NSString*)objectKey toDictionary:(NSMutableDictionary*)dictionary;
 /**
  * Override this in your subclasses to allow for any special data types to be set into the object,
  * This is necessary for any date fields
