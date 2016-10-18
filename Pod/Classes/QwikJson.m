@@ -510,11 +510,17 @@
 @implementation DBDateTime
 
 static NSString * dbDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+static NSArray<NSString*>* alternateDateFormats = nil;
 
 +(void)setDateFormat:(NSString*)format
 {
     dbDateTimeFormat = format;
 }
++(void)setAlternateDateFormats:(NSArray<NSString*>*)formats
+{
+    alternateDateFormats = formats;
+}
+
 
 +(id)objectFromDbString:(NSString*)dbString
 {
@@ -522,6 +528,21 @@ static NSString * dbDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
     [formatter setDateFormat:dbDateTimeFormat];
     //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSDate * date = [formatter dateFromString:dbString];
+    
+    //if the primary formatter failed, try alternate formats
+    if(date == nil && alternateDateFormats)
+    {
+        for(NSString * format in alternateDateFormats)
+        {
+            [formatter setDateFormat:format];
+            date = [formatter dateFromString:dbString];
+            if(date != nil)
+            {
+                break;
+            }
+        }
+    }
+    
     DBDateTime * dbDate = [[DBDateTime alloc]initWithDate:date];
     return dbDate;
 }
@@ -572,11 +593,16 @@ static NSString * dbDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
 //this class represents a date formatted like 2015-MM-DD
 @implementation DBDate
+
 static NSString * dbDateFormat = @"yyyy-MM-dd";
 
 +(void)setDateFormat:(NSString*)format
 {
     dbDateFormat = format;
+}
++(void)setAlternateDateFormats:(NSArray<NSString*>*)formats
+{
+    alternateDateFormats = formats;
 }
 
 +(id)objectFromDbString:(NSString*)dbString
@@ -584,6 +610,21 @@ static NSString * dbDateFormat = @"yyyy-MM-dd";
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:dbDateFormat];
     NSDate * date = [formatter dateFromString:dbString];
+    
+    //if the primary formatter failed, try alternate formats
+    if(date == nil && alternateDateFormats)
+    {
+        for(NSString * format in alternateDateFormats)
+        {
+            [formatter setDateFormat:format];
+            date = [formatter dateFromString:dbString];
+            if(date != nil)
+            {
+                break;
+            }
+        }
+    }
+    
     DBDate * dbDate = [[DBDate alloc]initWithDate:date];
     return dbDate;
 }
@@ -616,10 +657,13 @@ static NSString * dbDateFormat = @"yyyy-MM-dd";
 @implementation DBTime
 
 static NSString * dbTimeFormat = @"HH:mm:ss";
-
 +(void)setDateFormat:(NSString*)format
 {
     dbTimeFormat = format;
+}
++(void)setAlternateDateFormats:(NSArray<NSString*>*)formats
+{
+    alternateDateFormats = formats;
 }
 
 +(id)objectFromDbString:(NSString*)dbString
@@ -628,6 +672,21 @@ static NSString * dbTimeFormat = @"HH:mm:ss";
     [formatter setDateFormat:dbTimeFormat];
     //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSDate * date = [formatter dateFromString:dbString];
+    
+    //if the primary formatter failed, try alternate formats
+    if(date == nil && alternateDateFormats)
+    {
+        for(NSString * format in alternateDateFormats)
+        {
+            [formatter setDateFormat:format];
+            date = [formatter dateFromString:dbString];
+            if(date != nil)
+            {
+                break;
+            }
+        }
+    }
+    
     DBTime * dbDate = [[DBTime alloc]initWithDate:date];
     return dbDate;
 }

@@ -87,6 +87,7 @@
 -(id)initWithDate:(NSDate*)date;
 //use this to customize the date format
 +(void)setDateFormat:(NSString*)format;
++(void)setAlternateDateFormats:(NSArray<NSString*>*)formats;
 @property(nonatomic,strong)NSDate * date;
 @end
 
@@ -95,6 +96,7 @@
 -(id)initWithDate:(NSDate*)date;
 //use this to customize the date format
 +(void)setDateFormat:(NSString*)format;
++(void)setAlternateDateFormats:(NSArray<NSString*>*)formats;
 @property(nonatomic,strong)NSDate * date;
 @end
 
@@ -104,6 +106,7 @@
 -(id)initWithDBDate:(DBDate*)dbDate andDBTime:(DBTime*)dbTime;
 //use this to customize the date format
 +(void)setDateFormat:(NSString*)format;
++(void)setAlternateDateFormats:(NSArray<NSString*>*)formats;
 @property(nonatomic,strong)NSDate * date;
 @end
 

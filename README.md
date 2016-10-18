@@ -170,6 +170,7 @@ Convert to and from Strings
 12:00:00
 
 Note that you can customize the date formats by calling setDateFormat on the date class.
+Or call setAlternateDateFormats to provide an array of alternate formats if the primary one fails to parse
 ```objective-c
 [DBDate setDateFormat:@"MM/DD/YYYY"];
 ```
