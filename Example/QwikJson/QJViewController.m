@@ -24,12 +24,17 @@
     [super viewDidLoad];
     [self addData];
     
+    [QwikJson setSerializeNullsByDefault:YES];
+    
     //write to prefs
     [self.restaurant writeToPreferencesWithKey:@"data"];
     
     //serialize to dictionary and output
     NSDictionary * dictionary = [self.restaurant toDictionary];
-    self.label.text = [NSString stringWithFormat:@"%@",dictionary];
+    //self.label.text = [NSString stringWithFormat:@"%@",dictionary];
+    self.label.text = [NSString stringWithFormat:@"%@",[dictionary toJsonString]];
+    
+    
 }
 
 -(IBAction)makeMagic:(id)sender
@@ -65,6 +70,7 @@
     item.name = @"Yummy";
     item.descriptionText = @"Good stuff!";
     menu.menuItems = @[item];
+    item.serializeNulls = kNullSerializationSettingSerialize;
 }
 
 

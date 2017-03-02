@@ -175,6 +175,13 @@ Or call setAlternateDateFormats to provide an array of alternate formats if the 
 [DBDate setDateFormat:@"MM/DD/YYYY"];
 ```
 
+## Serialize Nulls
+Nulls will not be serlialized by default however there is a global setting as well as a per object setting to decide if nulls should be serialized
+```
+    [QwikJson setSerializeNullsByDefault:YES];
+    object.serializeNulls = kNullSerializationSettingDoNotSerialize;
+```
+
 ##NSManagedObject Support
 If you are using CoreData and would like to use QwikJson, you may also simply import and extend QwikJsonManagedObject instead of QwikJson
 

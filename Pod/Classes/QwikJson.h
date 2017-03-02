@@ -13,9 +13,20 @@
 //these are properties that are declared on all objects. Since we don't want to pass them into the api
 //they are always transient. If you wish to pass one of these variables in, simply rename the field using
 //the apiToObjectMapping method
-#define kDefaultTransientProperties @[@"superclass", @"hash", @"debugDescription", @"description"]
+#define kDefaultTransientProperties @[@"superclass", @"hash", @"debugDescription", @"description", @"serializeNulls"]
+
+typedef enum NullSerializationSetting : NSUInteger
+{
+    kNullSerializationSettingDefault = 0, kNullSerializationSettingSerialize, kNullSerializationSettingDoNotSerialize
+} NullSerializationSetting;
 
 @interface QwikJson : NSObject//<NSCoding>
+
+//these properties will tell us whether to serialize nulls.
++ (bool) serializeNullsByDefault;
++ (void) setSerializeNullsByDefault:(bool)val;
+@property NullSerializationSetting serializeNulls;
+
 //note in order for serialization to work, I am moving all properties to the specific class
 //and leaving all, including the ID out of the base class.
 //@property (nonatomic, strong) NSString* id;

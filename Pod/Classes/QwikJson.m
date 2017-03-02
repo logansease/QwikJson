@@ -12,7 +12,14 @@
 
 @implementation QwikJson
 
-/*
+
+static bool _serializeNullsByDefault;
++ (bool) serializeNullsByDefault
+{ @synchronized(self) { return _serializeNullsByDefault; } }
++ (void) setSerializeNullsByDefault:(bool)val
+{ @synchronized(self) { _serializeNullsByDefault = val; } }
+                                         
+ /*
  * create a test object. This is used by the test data service. override this in your subclass
  */
 +(id)testObject
@@ -256,13 +263,28 @@
     {
         [self serializeObject:[self valueForKey:key] withApiKey:renamedKey fromKey:key toDictionary:dict];
     }
+    
+    //handle setting serializing nulls
+    else if([self valueForKey:key] == nil || [self valueForKey:key] == [NSNull null])
+    {
+        if((self.serializeNulls == kNullSerializationSettingDefault && QwikJson.serializeNullsByDefault == YES) || self.serializeNulls == kNullSerializationSettingSerialize )
+        {
+            [self serializeObject:[self valueForKey:key] withApiKey:renamedKey fromKey:key toDictionary:dict];
+        }
+    }
 }
 
 //this exists so that a subclass might override this and specify a new key or perform some custom action.
 -(void)serializeObject:(NSObject*)object withApiKey:(NSString*)apiKey fromKey:(NSString*)objectKey toDictionary:(NSMutableDictionary*)dictionary
 {
+    
+    if(object == nil)
+    {
+        object = [NSNull null];
+    }
+    
     @try{
-    [dictionary setObject:object forKey:apiKey];
+        [dictionary setObject:object forKey:apiKey];
     }
     @catch(NSException * e)
     {
