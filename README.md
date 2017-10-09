@@ -154,6 +154,8 @@ Convert to and from Strings
 
 * Note, if you are using Swift and using booleans, use Bool. DO NOT use Bool? since optional booleans cannot be expressed in objective c
 
+* Another Note: When using Swift 4, all swift properties must be prefaced with @objc for them to be readable.
+
 
 ### Custom Date Serializers, handle parsing various date / time formats
 
