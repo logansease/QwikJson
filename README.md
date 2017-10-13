@@ -154,6 +154,8 @@ Convert to and from Strings
 
 * Note, if you are using Swift and using booleans, use Bool. DO NOT use Bool? since optional booleans cannot be expressed in objective c
 
+* Another Note: When using Swift 4, all swift properties must be prefaced with @objc for them to be readable.
+
 
 ### Custom Date Serializers, handle parsing various date / time formats
 
@@ -194,7 +196,7 @@ Inside this repo and in the android directory, you will also find a very similar
 In addition to parsing and serializing JSON, the other essential pieice of communicatiing with RESTful APIs is a good
 networking library.
 Consider using QwikHttp in combination with this library to complete your toolset.
-https://github.com/qonceptual/QwikHttp
+https://github.com/logansease/QwikHttp
 
 Also, checkout the SeaseAssist pod for a ton of great helpers to make writing your iOS code even simpler!
 https://github.com/logansease/SeaseAssist
@@ -202,7 +204,7 @@ https://github.com/logansease/SeaseAssist
 
 ## Author
 
-Logan Sease, logan.sease@qonceptual.com
+Logan Sease, lsease@gmail.com
 
 ## License
 
