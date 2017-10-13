@@ -103,6 +103,10 @@ static bool _serializeNullsByDefault;
  */
 +(Class)classForKey:(NSString*)key
 {
+    return  [self typeForKey:key];
+}
++(Class)typeForKey:(NSString*)key
+{
     return nil;
 }
 
@@ -310,13 +314,42 @@ static bool _serializeNullsByDefault;
         // Serialize the dictionary
         json = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
         
+//        // If no errors, let's view the JSON
+//        if (json != nil && error == nil)
+//        {
+//            NSString *jsonString = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
+//
+//            NSLog(@"JSON: %@", jsonString);
+//        }
+    }
+    
+    return json;
+}
+
+
++ (NSData*)toJSONDataFromArray:(NSArray<QwikJson*>*)inputArray
+{
+    NSMutableArray * dictArray = [NSMutableArray arrayWithCapacity:inputArray.count];
+    for(QwikJson* object in inputArray)
+    {
+        [dictArray addObject:[object toDictionary]];
+    }
+    
+    NSError *error = nil;
+    NSData *json;
+    
+    // Dictionary convertable to JSON ?
+    if ([NSJSONSerialization isValidJSONObject:dictArray])
+    {
+        // Serialize the dictionary
+        json = [NSJSONSerialization dataWithJSONObject:dictArray options:NSJSONWritingPrettyPrinted error:&error];
+        
         // If no errors, let's view the JSON
-        if (json != nil && error == nil)
-        {
-            NSString *jsonString = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"JSON: %@", jsonString);
-        }
+//        if (json != nil && error == nil)
+//        {
+//            NSString *jsonString = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
+//            NSLog(@"JSON: %@", jsonString);
+//        }
     }
     
     return json;

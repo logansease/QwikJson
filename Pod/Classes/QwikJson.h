@@ -20,7 +20,7 @@ typedef enum NullSerializationSetting : NSUInteger
     kNullSerializationSettingDefault = 0, kNullSerializationSettingSerialize, kNullSerializationSettingDoNotSerialize
 } NullSerializationSetting;
 
-@interface QwikJson : NSObject//<NSCoding>
+@interface QwikJson : NSObject
 
 //these properties will tell us whether to serialize nulls.
 + (bool) serializeNullsByDefault;
@@ -33,6 +33,7 @@ typedef enum NullSerializationSetting : NSUInteger
 
 //convert an object to NSData
 - (NSData*)toJSONData;
++ (NSData*)toJSONDataFromArray:(NSArray<QwikJson*>*)inputArray;
 
 //convert to a dictionary
 -(NSDictionary*)toDictionary;
@@ -48,7 +49,9 @@ typedef enum NullSerializationSetting : NSUInteger
 
 //override in subclass to specify a nested model that should be deserialized
 //may also be useful if the api is returning a Number ID field but you want to store it as a String
+//note type for key is just an alias for classForKey
 +(Class)classForKey:(NSString*)key;
++(Class)typeForKey:(NSString*)key;
 
 //override in subclass to perform some custom deserizliation or change property keys
 -(void)writeObjectFrom:(NSDictionary*)inputDictionary forKey:(NSString*)key toProperty:(NSString*)property;
