@@ -33,6 +33,10 @@ This pod is written in Objective-C but works great with Swift projects as well.
 
 ## Usage
 
+```
+As of Swift 3, all swift properties must contain the @objc tag to be visible to swift
+```
+
 make a model class and extend QwikJson, and add your fields
 ```objective-c
 //menu.h
@@ -40,6 +44,14 @@ make a model class and extend QwikJson, and add your fields
 @property(nonatomic,strong)NSString * name;
 @property(nonatomic,strong)NSArray * menuItems;
 @end
+```
+
+```swift
+class Menu : QwikJson
+{
+    @objc var name : String?
+    
+}
 ```
 
 now you can convert from dictionaries and vice versa with ease
