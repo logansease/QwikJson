@@ -34,9 +34,11 @@ typedef enum NullSerializationSetting : NSUInteger
 //convert an object to NSData
 - (NSData*)toJSONData;
 + (NSData*)toJSONDataFromArray:(NSArray<QwikJson*>*)inputArray;
++ (NSArray<QwikJson*>*)toArrayFrom:(NSData*)jsonData;
 
 //convert to a dictionary
 -(NSDictionary*)toDictionary;
++(NSArray<NSDictionary*>*)toDictionaryArrayFrom:(NSArray<QwikJson*>*)qwikJsonArray;
 
 //instanciate from a dictionary
 +(id)objectFromDictionary:(NSDictionary*)inputDictionary;
@@ -69,6 +71,8 @@ typedef enum NullSerializationSetting : NSUInteger
 //easily read and write objects to the user defaults
 -(void)writeToPreferencesWithKey:(NSString*)key;
 +(id)readFromPrefencesWithKey:(NSString*)key;
++(void)writeArray:(NSArray<QwikJson*>*)inputArray toPreferencesWithKey:(NSString*)key;
++(id)readArrayFromPrefencesWithKey:(NSString*)key;
 
 //initilization helpers
 +(id)testObject; //empty object

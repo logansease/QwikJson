@@ -34,7 +34,12 @@
     //self.label.text = [NSString stringWithFormat:@"%@",dictionary];
     self.label.text = [NSString stringWithFormat:@"%@",[dictionary toJsonString]];
     
+    NSArray * array = @[self.restaurant];
+    [Restaurant writeArray:array toPreferencesWithKey:@"PREFS"];
     
+    NSArray * loaded = [Restaurant readArrayFromPrefencesWithKey:@"PREFS"];
+    NSArray * dicts = [Restaurant toDictionaryArrayFrom:loaded];
+    NSLog(@"%@", [dicts toJsonString]);
 }
 
 -(IBAction)makeMagic:(id)sender

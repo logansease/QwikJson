@@ -195,6 +195,24 @@ static bool _serializeNullsByDefault;
     return object;
 }
 
++(void)writeArray:(NSArray<QwikJson*>*)inputArray toPreferencesWithKey:(NSString*)key
+{
+    NSData * data = [self toJSONDataFromArray:inputArray];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:data forKey:key];
+    [defaults synchronize];
+}
++(id)readArrayFromPrefencesWithKey:(NSString*)key
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData * data = [defaults objectForKey:key];
+    if (!data) {
+        return nil;
+    }
+    return [self toArrayFrom:data];
+}
+
 #pragma mark standard serialization
 
 /**
@@ -217,6 +235,19 @@ static bool _serializeNullsByDefault;
     
     return [NSDictionary dictionaryWithDictionary:dict];
     
+}
+
++(NSArray<NSDictionary*>*)toDictionaryArrayFrom:(NSArray<QwikJson*>*)qwikJsonArray
+{
+    NSMutableArray * array = [NSMutableArray arrayWithCapacity:qwikJsonArray.count];
+    for(int i = 0 ; i < qwikJsonArray.count ; i++) {
+        QwikJson * obj = qwikJsonArray[i];
+        NSDictionary * dict = [obj toDictionary];
+        if( dict ) {
+            [array addObject:dict];
+        }
+    }
+    return array;
 }
 
 //This method is used by the toDictionary method. Override this in your subclass to customize the json / dictionary
@@ -353,6 +384,19 @@ static bool _serializeNullsByDefault;
     }
     
     return json;
+}
+
++ (NSArray<QwikJson*>*)toArrayFrom:(NSData*)jsonData;
+{
+    NSError *error = nil;
+
+    NSObject * deserialized = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+    if(deserialized && [deserialized isKindOfClass:[NSArray class]]) {
+        NSArray * array = (NSArray*)deserialized;
+        return [self arrayForJsonArray:array ofClass:[self class]];
+    }
+    
+    return nil;
 }
 
 
