@@ -61,21 +61,6 @@ Use Nested Objects (even nested arrays) and custom date serlizers
 @property(nonatomic,strong)DBTimeStamp * createdAt;
 @end
 
-//restaurant.m
-+(Class)classForKey:(NSString*)key
-{
-    if([key isEqualToString:@"menus"])
-    {
-        return [Menu class];
-    }
-    if([key isEqualToString:@"createdAt"])
-    {
-        return [DBTimeStamp class];
-    }
-
-    return [super classForKey:key];
-}
-
 ```
 
 Perform Specialized Logic during serialization or deserialization.
@@ -177,6 +162,28 @@ Or call setAlternateDateFormats to provide an array of alternate formats if the 
 [DBDate setDateFormat:@"MM/DD/YYYY"];
 ```
 
+### Number / String compatibility
+If your api sometimes returns Strings in number fields or if you are supporting NSDecimalNumber in order to support high precision numbers (in which case your api may serialize into Strings), you can use the classForKey method to specify the type and the parser will check to make sure it is deserializing correctly
+```
+@property NSNumber* amount;
+@property NSDecimalNumber* cost;
+
+//restaurant.m
++(Class)classForKey:(NSString*)key
+{
+    if([key isEqualToString:@"amount"])
+    {
+        return [NSNumber class];
+    }
+    if([key isEqualToString:@"cost"])
+    {
+        return [NSDecimalNumber class];
+    }
+
+    return [super classForKey:key];
+}
+```
+
 ## Serialize Nulls
 Nulls will not be serlialized by default however there is a global setting as well as a per object setting to decide if nulls should be serialized
 ```
@@ -184,7 +191,7 @@ Nulls will not be serlialized by default however there is a global setting as we
     object.serializeNulls = kNullSerializationSettingDoNotSerialize;
 ```
 
-##NSManagedObject Support
+## NSManagedObject Support
 If you are using CoreData and would like to use QwikJson, you may also simply import and extend QwikJsonManagedObject instead of QwikJson
 
 ## Android

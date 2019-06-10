@@ -444,6 +444,13 @@ static bool _serializeNullsByDefault;
             [self setValue:[f numberFromString:idString]  forKey:renamedKey];
         }
         
+        //if this is supposed to be an NSDecimalNumber, but the api is returning it as an NSString, convert it to a NSDecimalNumber
+        else if(objectClass == [NSDecimalNumber class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSString class]])
+        {
+            NSString * idString = [inputDictionary valueForKey:key];
+            [self setValue:[[NSDecimalNumber alloc] initWithString:idString]  forKey:renamedKey];
+        }
+        
         //otherwise, this is just a standard setter method, so set the value
         else{
             if(![[inputDictionary valueForKey:key] isEqual:[NSNull null]])
