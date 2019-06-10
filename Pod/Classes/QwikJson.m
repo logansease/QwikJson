@@ -779,10 +779,18 @@ static NSString * dbTimeFormat = @"HH:mm:ss";
 
 //this class represents a time stamp formatted like 14128309481 in UTC
 @implementation DBTimeStamp
+
+static float _multiplier = 0.0f;
+
++(void)setTimeStampMultiplier:(float)multiplier
+{
+    _multiplier = multiplier;
+}
+
 +(id)objectFromDbString:(NSString*)dbString
 {
     if ((dbString == nil) || ([dbString isEqual:[NSNull null]])) return nil;
-    NSDate * date = [[NSDate alloc] initWithTimeIntervalSince1970:[dbString doubleValue] * 0.001f];
+    NSDate * date = [[NSDate alloc] initWithTimeIntervalSince1970:[dbString doubleValue] / _multiplier];
     
     //convert to local time
     //NSTimeZone *tz = [NSTimeZone defaultTimeZone];
@@ -798,7 +806,7 @@ static NSString * dbTimeFormat = @"HH:mm:ss";
     //NSDate * utcDate = [NSDate dateWithTimeInterval: seconds sinceDate: self.date];
     
     NSTimeInterval interval = [self.date timeIntervalSince1970];//[utcDate timeIntervalSince1970];
-    NSString *string = [NSString stringWithFormat:@"%.0f", interval * 1000.0f];
+    NSString *string = [NSString stringWithFormat:@"%.0f", interval * _multiplier];
     return string;
 }
 -(NSString*)displayString

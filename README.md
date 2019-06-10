@@ -50,7 +50,6 @@ make a model class and extend QwikJson, and add your fields
 class Menu : QwikJson
 {
     @objc var name : String?
-    
 }
 ```
 
@@ -73,6 +72,44 @@ Use Nested Objects (even nested arrays) and custom date serlizers
 @property(nonatomic,strong)DBTimeStamp * createdAt;
 @end
 
++(Class)classForKey:(NSString*)key
+{
+    if([key isEqualToString:@"menus"])
+    {
+        return [Menu class];
+    }
+    if([key isEqualToString:@"createdAt"])
+    {
+        return [DBTimeStamp class];
+    }
+
+    return [super classForKey:key];
+}
+```
+
+Or in swift
+```
+class Restraunt: QwikJson {
+   @objc var imageUrl: String?
+   @objc var name: String?
+   @objc var menus: [Menu] = []
+   @objc var createdAt: DBTimeStamp?
+   
+   override public class func type(forKey: String!) -> AnyClass!
+   {
+    if forKey == "createdAt"
+    {
+        return DBTimeStamp
+    }
+   
+    if forKey == "menu"
+    {
+        return Menu.self
+    }
+
+    return super.type(forKey: forKey)
+   }
+}
 ```
 
 Perform Specialized Logic during serialization or deserialization.
@@ -148,6 +185,7 @@ Convert to and from Strings
 - NSString / String
 - NSArray  / []
 - NSNumber 
+- NSDecimalNumber (but you must specify the type in classForKey: )
 
 * Note, if you are using Swift and using booleans, use Bool. DO NOT use Bool? since optional booleans cannot be expressed in objective c
 
@@ -156,16 +194,16 @@ Convert to and from Strings
 
 ### Custom Date Serializers, handle parsing various date / time formats
 
-####DBDate            
+#### DBDate            
 2015-12-30
 
-####DBDateTime        
+#### DBDateTime        
 2015-01-01T10:15:30 
 
-####DBDateTimeStamp   
+#### DBTimeStamp   
 0312345512
 
-####DBTime            
+#### DBTime            
 12:00:00
 
 Note that you can customize the date formats by calling setDateFormat on the date class.
@@ -173,6 +211,12 @@ Or call setAlternateDateFormats to provide an array of alternate formats if the 
 ```objective-c
 [DBDate setDateFormat:@"MM/DD/YYYY"];
 ```
+
+For DBTimeStamp, set a multiplier to support millisecond formatting if your api returns milliseconds instead of seconds
+```
+[DBTimeStamp setTimeStampMultiplier: 1000.0f];
+```
+
 
 ### Number / String compatibility
 If your api sometimes returns Strings in number fields or if you are supporting NSDecimalNumber in order to support high precision numbers (in which case your api may serialize into Strings), you can use the classForKey method to specify the type and the parser will check to make sure it is deserializing correctly

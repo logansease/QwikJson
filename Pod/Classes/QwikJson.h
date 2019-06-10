@@ -128,4 +128,5 @@ typedef enum NullSerializationSetting : NSUInteger
 @interface DBTimeStamp : NSObject<DBField>
 -(id)initWithDate:(NSDate*)date;
 @property(nonatomic,strong)NSDate * date;
++(void)setTimeStampMultiplier:(float)multiplier;
 @end

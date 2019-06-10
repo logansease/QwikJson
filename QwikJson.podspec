@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "QwikJson"
-s.version          = "1.0.21"
+s.version          = "1.0.22"
 s.summary          = "A deep serialization and deserialization base object."
 
 # This description is used to generate tags and improve search results.
@@ -21,7 +21,7 @@ In our ReSTful API world, we are constantly passing JSON objects to our api and 
 
 To solve this, I introduce QwikJson. An amazingly powerful and simple library for serializing and deserializing json objects.
 
-Simple have your model classes extend the QwikJson class and the world shall become your oyster.
+Simply have your model classes extend the QwikJson class and the world shall become your oyster.
 
 QwikJson makes converting objects to dictionaries and arrays of dictionaries a breeze. It includes support for nested model objects, nested array model objects, multiple date serializers, easily storing and loading objects from user defaults and converting your array arrays and dictionaries to json Strings and vice versa.
 
