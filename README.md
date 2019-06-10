@@ -88,8 +88,8 @@ Use Nested Objects (even nested arrays) and custom date serlizers
 ```
 
 Or in swift
-```
-class Restraunt: QwikJson {
+```swift
+class Restaurant: QwikJson {
    @objc var imageUrl: String?
    @objc var name: String?
    @objc var menus: [Menu] = []
