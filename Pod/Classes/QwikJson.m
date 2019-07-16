@@ -494,6 +494,11 @@ static bool _serializeNullsByDefault;
             NSString * idString = [inputDictionary valueForKey:key];
             [self setValue:[[NSDecimalNumber alloc] initWithString:idString]  forKey:renamedKey];
         }
+        else if(objectClass == [NSDecimalNumber class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSNumber class]])
+        {
+            NSNumber * idNumber = [inputDictionary valueForKey:key];
+            [self setValue:[[NSDecimalNumber alloc] initWithDecimal:[idNumber decimalValue]]  forKey:renamedKey];
+        }
         
         //otherwise, this is just a standard setter method, so set the value
         else{
