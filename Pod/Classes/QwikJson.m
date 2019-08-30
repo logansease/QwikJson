@@ -620,7 +620,7 @@ static bool _serializeNullsByDefault;
 //this class represents a date time formatted like 2015-01-01T10:15:30 in UTC
 @implementation DBDateTime
 
-static NSString * dbDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+static NSString * dbDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 static NSArray<NSString*>* alternateDateFormats = nil;
 
 +(void)setDateFormat:(NSString*)format
