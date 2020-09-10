@@ -134,3 +134,9 @@ typedef enum NullSerializationSetting : NSUInteger
 @property(nonatomic,strong)NSDate * date;
 +(void)setTimeStampMultiplier:(float)multiplier;
 @end
+
+//this class represents a time stamp formatted like 14128309481000 in UTC
+@interface DBMSTimeStamp : NSObject<DBField>
+-(id)initWithDate:(NSDate*)date;
+@property(nonatomic,strong)NSDate * date;
+@end

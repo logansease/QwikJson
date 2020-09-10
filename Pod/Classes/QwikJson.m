@@ -432,8 +432,8 @@ static bool _serializeNullsByDefault;
     
     //see if we need to rename our key
     NSDictionary * nameMappings = [[self class]apiToObjectMapping];
-    NSString * renamedKey = key;
-    if([nameMappings.allKeys containsObject:key])
+    NSString * renamedKey = property;
+    if([nameMappings.allKeys containsObject:key] && property == key)
     {
         renamedKey = [nameMappings valueForKey:key];
     }
@@ -876,3 +876,45 @@ static float _multiplier = 0.0f;
 
 @end
 
+//this class represents a time stamp formatted like 14128309481 in UTC
+@implementation DBMSTimeStamp
+
++(id)objectFromDbString:(NSString*)dbString
+{
+    if ((dbString == nil) || ([dbString isEqual:[NSNull null]])) return nil;
+    NSDate * date = [[NSDate alloc] initWithTimeIntervalSince1970:[dbString doubleValue] / 1000];
+    
+    //convert to local time
+    //NSTimeZone *tz = [NSTimeZone defaultTimeZone];
+    //NSInteger seconds = [tz secondsFromGMTForDate: date];
+    NSDate * newDate = date;//[NSDate dateWithTimeInterval: seconds sinceDate: date];
+    DBTimeStamp * dbDate = [[DBTimeStamp alloc]initWithDate:newDate];
+    return dbDate;
+}
+-(NSString*)toDbFormattedString
+{
+    //NSTimeZone *tz = [NSTimeZone defaultTimeZone];
+    //NSInteger seconds = -[tz secondsFromGMTForDate: self.date];
+    //NSDate * utcDate = [NSDate dateWithTimeInterval: seconds sinceDate: self.date];
+    
+    NSTimeInterval interval = [self.date timeIntervalSince1970];//[utcDate timeIntervalSince1970];
+    NSString *string = [NSString stringWithFormat:@"%.0f", interval * 1000];
+    return string;
+}
+-(NSString*)displayString
+{
+    NSDateFormatter * displayFormatter = [[NSDateFormatter alloc]init];
+    [displayFormatter setDateFormat:@"h:mm a"];
+    return [displayFormatter stringFromDate:self.date];
+}
+-(id)initWithDate:(NSDate*)date
+{
+    if([super init] && date)
+    {
+        self.date = date;
+        return self;
+    }
+    return nil;
+}
+
+@end
