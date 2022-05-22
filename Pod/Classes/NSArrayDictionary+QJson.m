@@ -6,7 +6,7 @@
 //
 //
 
-#import "NSArrayDictionary+QJson.h"
+#import "../include/NSArrayDictionary+QJson.h"
 
 @implementation NSDictionary (QJson)
 -(NSString*)toJsonString
@@ -15,7 +15,7 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
                                                        options:(NSJSONWritingOptions) NSJSONWritingPrettyPrinted
                                                          error:&error];
-    
+
     if (! jsonData) {
         NSLog(@"json error: %@", error.localizedDescription);
         return @"";
@@ -28,7 +28,7 @@
 {
     NSError *jsonError;
     NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
-    
+
     return [NSJSONSerialization JSONObjectWithData:objectData
                                            options:NSJSONReadingMutableContainers
                                              error:&jsonError];
@@ -44,7 +44,7 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
                                                        options:(NSJSONWritingOptions) NSJSONWritingPrettyPrinted
                                                          error:&error];
-    
+
     if (! jsonData) {
         NSLog(@"json error: %@", error.localizedDescription);
         return @"";
@@ -57,7 +57,7 @@
 {
     NSError *jsonError;
     NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
-    
+
     return [NSJSONSerialization JSONObjectWithData:objectData
                                            options:NSJSONReadingMutableContainers
                                              error:&jsonError];

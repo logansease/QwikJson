@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Qonceptual. All rights reserved.
 //
 
-#import "QwikJsonManagedObject.h"
+#import "../include/QwikJsonManagedObject.h"
 #import <objc/runtime.h>
 
 
@@ -24,7 +24,7 @@
 +(id)objectWithId:(NSString*)newId
 {
     QwikJson * object = [[[self class] alloc] init];
-    
+
     SEL selector = NSSelectorFromString(@"setId:");
     if([object respondsToSelector:selector])
     {
@@ -70,7 +70,7 @@
                     [newArray addObject:obj];
                 }
             }
-            
+
             [super setValue:newArray forKey:key];
         }
         else{
@@ -81,7 +81,7 @@
     {
         NSLog(@"Error Setting %@: %@", key, e);
     }
-    
+
 }
 
 
@@ -98,20 +98,20 @@
 - (void)encodeWithCoder:(NSCoder *)encoder {
     //Encode properties, other class variables, etc
     //[encoder encodeObject:self.question forKey:@"question"];
-    
+
     unsigned count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
-    
+
     for (int i = 0; i < count; i++) {
         NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
         [self encode:encoder propertyNamed:key];
     }
-    
+
 }
 
 //override this in your base class to seralize a special property
 -(void)encode:(NSCoder*)encoder propertyNamed:(NSString*)key{
-    
+
     //check for a string output values for our custom db types
     //first see if this is one of our custom property types. If so, then convert it to a string before we save it
     Class objectClass = [[self class ]classForKey:key];
@@ -132,12 +132,12 @@
         //self.question = [decoder decodeObjectForKey:@"question"];
         unsigned count;
         objc_property_t *properties = class_copyPropertyList([self class], &count);
-        
+
         for (int i = 0; i < count; i++) {
             NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
             [self decode:decoder propertyNamed:key];
         }
-        
+
     }
     return self;
 }
@@ -175,7 +175,7 @@
         object = [[self class] objectFromDictionary:dictionary];
     }
     @catch (NSException *exception) {}
-    
+
     return object;
 }
 
@@ -186,21 +186,21 @@
  */
 -(NSDictionary*)toDictionary
 {
-    
+
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    
+
     unsigned count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
-    
+
     for (int i = 0; i < count; i++) {
         NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
         [self addProperty:key toDictionary:dict];
     }
-    
+
     free(properties);
-    
+
     return [NSDictionary dictionaryWithDictionary:dict];
-    
+
 }
 
 //This method is used by the toDictionary method. Override this in your subclass to customize the json / dictionary
@@ -214,19 +214,19 @@
     {
         renamedKey = [nameMappings allKeysForObject:key].firstObject;
     }
-    
+
     //if we are supposed to ignore this field, do not serialize it
     if([[[self class] transientProperties] containsObject:renamedKey])
     {
         return;
     }
-    
+
     //if this object is a serializable object, serialize it and add it to the dictionary
     if([[self valueForKey:key] respondsToSelector:@selector(toDictionary)])
     {
         [self serializeObject:[[self valueForKey:key]toDictionary] withKey:renamedKey toDictionary:dict];
     }
-    
+
     //if this is an array of db objects that is not empty then serialize the array and set it
     else if([[self valueForKey:key] isKindOfClass:[NSArray class]] && ((NSArray*)[self valueForKey:key]).count > 0 && [((NSArray*)[self valueForKey:key])[0] respondsToSelector:@selector(toDictionary)])
     {
@@ -238,14 +238,14 @@
         }
         [self serializeObject:serializedArray withKey:renamedKey toDictionary:dict];
     }
-    
+
     //if this is a specialized dbField object as defined by implementing the dbField protocol, such as DBDate
     //use the protocol conversion methods to convert and save the value
     else if([[self valueForKey:key] respondsToSelector:@selector(toDbFormattedString)])
     {
         [self serializeObject:[[self valueForKey:key]toDbFormattedString]  withKey:renamedKey toDictionary:dict];
     }
-    
+
     //otherwise just set it
     else if([self valueForKey:key])
     {
@@ -271,27 +271,27 @@
  */
 - (NSData*)toJSONData
 {
-    
+
     NSDictionary * dict = [self toDictionary];
-    
+
     NSError *error = nil;
     NSData *json;
-    
+
     // Dictionary convertable to JSON ?
     if ([NSJSONSerialization isValidJSONObject:dict])
     {
         // Serialize the dictionary
         json = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-        
+
         // If no errors, let's view the JSON
         if (json != nil && error == nil)
         {
             NSString *jsonString = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
-            
+
             NSLog(@"JSON: %@", jsonString);
         }
     }
-    
+
     return json;
 }
 
@@ -305,7 +305,7 @@
 {
     @try{
         QwikJson* object = [[[self class] alloc] init];
-        
+
         for(NSString * key in inputDictionary.allKeys)
         {
             [object writeObjectFrom:inputDictionary forKey:key toProperty:key];
@@ -332,14 +332,14 @@
     {
         renamedKey = [nameMappings valueForKey:key];
     }
-    
+
     //determine the type of object we are going to be setting
     Class objectClass = [[self class] classForKey:renamedKey];
-    
+
     @try {
-        
+
         //NSObject * value = [inputDictionary objectForKey:key];
-        
+
         //if this is a dictionary it is a foreign key associated object
         //so parse that object and then set it
         if(objectClass != nil && [[inputDictionary objectForKey:key]isKindOfClass:[NSDictionary class]])
@@ -347,7 +347,7 @@
             QwikJson * subObject = [objectClass objectFromDictionary:[inputDictionary objectForKey:key]];
             [self setValue:subObject forKey:renamedKey];
         }
-        
+
         //if this is an array then parse that object array and set it
         else if(objectClass != nil && [[inputDictionary objectForKey:key]isKindOfClass:[NSArray class]])
         {
@@ -355,7 +355,7 @@
             NSArray * objectArray = [[self class] arrayForJsonArray:jsonArray ofClass:objectClass];
             [self setValue:objectArray forKey:renamedKey];
         }
-        
+
         //if this is a specific dbField type then parse this using the dbField parsing protocol
         else if(objectClass != nil && [objectClass respondsToSelector:@selector(objectFromDbString:)] && [inputDictionary objectForKey:key] != [NSNull null])
         {
@@ -365,7 +365,7 @@
                 [self setValue:valueObject forKey:renamedKey];
             }
         }
-        
+
         //if this is supposed to be an NSString, but the api is returning it as an NSNumber, convert it to a string
         //this happens in the case of the id field
         else if(objectClass == [NSString class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSNumber class]])
@@ -373,7 +373,7 @@
             NSNumber * idNumber = [inputDictionary valueForKey:key];
             [self setValue:[idNumber stringValue] forKey:renamedKey];
         }
-        
+
         //if this is supposed to be an NSNumber, but the api is returning it as an NSString, convert it to a NSNumber
         else if(objectClass == [NSNumber class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSString class]])
         {
@@ -382,7 +382,7 @@
             f.numberStyle = NSNumberFormatterDecimalStyle;
             [self setValue:[f numberFromString:idString]  forKey:renamedKey];
         }
-        
+
         //otherwise, this is just a standard setter method, so set the value
         else{
             if(![[inputDictionary valueForKey:key] isEqual:[NSNull null]])
@@ -394,14 +394,14 @@
                 [self setValue:nil forKey:renamedKey];
             }
         }
-        
+
     }
     @catch (NSException *exception) {
         //swallow the exception. No need for tons of logging. This will happen if the property doesn't have a setter,
         //which can be common
         //NSLog(@"There was an error parsing %@ with key %@, error = %@",[objectClass description], key, exception.description);
     }
-    
+
 }
 
 /**
@@ -413,21 +413,21 @@
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:objectNotation
                                                          options:0
                                                            error:&localError];
-    
+
     if (localError != nil)
     {
         *error = localError;
         return nil;
     }
-    
+
     QwikJson* object = [[self class] objectFromDictionary:dict];
-    
+
     if (localError != nil)
     {
         *error = localError;
         return nil;
     }
-    
+
     return object;
 }
 
@@ -439,7 +439,7 @@
 +(NSArray*)arrayForJsonArray:(NSArray*)inputArray ofClass:(Class)parseClass
 {
     NSMutableArray * array = [NSMutableArray array];
-    
+
     for(NSObject * object in inputArray)
     {
         if([object isKindOfClass:[NSDictionary class]])
@@ -485,7 +485,7 @@
         return YES;
     if (!other || ![other isKindOfClass:[self class]])
         return NO;
-    
+
     SEL selector = NSSelectorFromString(@"id");
     if([self respondsToSelector:selector] && [other respondsToSelector:selector])
     {

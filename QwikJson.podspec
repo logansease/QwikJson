@@ -39,7 +39,7 @@ s.watchos.deployment_target = '2.0'
 
 s.requires_arc = true
 
-s.source_files = 'Pod/Classes/**/*'
+s.source_files = 'Pod/Classes/**/*', 'Pod/Classes/include/**/*'
 
 # s.public_header_files = 'Pod/Classes/**/*.h'
  s.frameworks = 'CoreData'

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Qonceptual. All rights reserved.
 //
 
-#import "QwikJson.h"
+#import "../include/QwikJson.h"
 #import <objc/runtime.h>
 
 
@@ -18,7 +18,7 @@ static bool _serializeNullsByDefault;
 { @synchronized(self) { return _serializeNullsByDefault; } }
 + (void) setSerializeNullsByDefault:(bool)val
 { @synchronized(self) { _serializeNullsByDefault = val; } }
-                                         
+
  /*
  * create a test object. This is used by the test data service. override this in your subclass
  */
@@ -31,7 +31,7 @@ static bool _serializeNullsByDefault;
 +(id)objectWithId:(NSString*)newId
 {
     QwikJson * object = [[[self class] alloc] init];
-    
+
     SEL selector = NSSelectorFromString(@"setId:");
     if([object respondsToSelector:selector])
     {
@@ -79,7 +79,7 @@ static bool _serializeNullsByDefault;
                 [newArray addObject:obj];
             }
         }
-        
+
         [super setValue:newArray forKey:key];
     }
     else{
@@ -93,7 +93,7 @@ static bool _serializeNullsByDefault;
             NSLog(@"Error Setting %@: %@", key, e);
         }
     }
-    
+
 }
 
 
@@ -114,20 +114,20 @@ static bool _serializeNullsByDefault;
 - (void)encodeWithCoder:(NSCoder *)encoder {
     //Encode properties, other class variables, etc
     //[encoder encodeObject:self.question forKey:@"question"];
-    
+
     unsigned count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
-    
+
     for (int i = 0; i < count; i++) {
         NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
         [self encode:encoder propertyNamed:key];
     }
-    
+
 }
 
 //override this in your base class to seralize a special property
 -(void)encode:(NSCoder*)encoder propertyNamed:(NSString*)key{
-    
+
     //check for a string output values for our custom db types
     //first see if this is one of our custom property types. If so, then convert it to a string before we save it
     Class objectClass = [[self class ]classForKey:key];
@@ -148,12 +148,12 @@ static bool _serializeNullsByDefault;
         //self.question = [decoder decodeObjectForKey:@"question"];
         unsigned count;
         objc_property_t *properties = class_copyPropertyList([self class], &count);
-        
+
         for (int i = 0; i < count; i++) {
             NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
             [self decode:decoder propertyNamed:key];
         }
-        
+
     }
     return self;
 }
@@ -191,14 +191,14 @@ static bool _serializeNullsByDefault;
         object = [[self class] objectFromDictionary:dictionary];
     }
     @catch (NSException *exception) {}
-    
+
     return object;
 }
 
 +(void)writeArray:(NSArray<QwikJson*>*)inputArray toPreferencesWithKey:(NSString*)key
 {
     NSData * data = [self toJSONDataFromArray:inputArray];
-    
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:data forKey:key];
     [defaults synchronize];
@@ -220,21 +220,21 @@ static bool _serializeNullsByDefault;
  */
 -(NSDictionary*)toDictionary
 {
-    
+
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    
+
     unsigned count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
-    
+
     for (int i = 0; i < count; i++) {
         NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
         [self addProperty:key toDictionary:dict];
     }
-    
+
     free(properties);
-    
+
     return [NSDictionary dictionaryWithDictionary:dict];
-    
+
 }
 
 +(NSArray<NSDictionary*>*)toDictionaryArrayFrom:(NSArray<QwikJson*>*)qwikJsonArray
@@ -261,19 +261,19 @@ static bool _serializeNullsByDefault;
     {
         renamedKey = [nameMappings allKeysForObject:key].firstObject;
     }
-    
+
     //if we are supposed to ignore this field, do not serialize it
     if([[[self class] transientProperties] containsObject:renamedKey] || [kDefaultTransientProperties containsObject:renamedKey])
     {
         return;
     }
-    
+
     //if this object is a serializable object, serialize it and add it to the dictionary
     if([[self valueForKey:key] respondsToSelector:@selector(toDictionary)])
     {
         [self serializeObject:[[self valueForKey:key]toDictionary] withApiKey:renamedKey fromKey:key toDictionary:dict];
     }
-    
+
     //if this is an array of db objects that is not empty then serialize the array and set it
     else if([[self valueForKey:key] isKindOfClass:[NSArray class]] && ((NSArray*)[self valueForKey:key]).count > 0 && [((NSArray*)[self valueForKey:key])[0] respondsToSelector:@selector(toDictionary)])
     {
@@ -285,20 +285,20 @@ static bool _serializeNullsByDefault;
         }
         [self serializeObject:serializedArray withApiKey:renamedKey fromKey:key toDictionary:dict];
     }
-    
+
     //if this is a specialized dbField object as defined by implementing the dbField protocol, such as DBDate
     //use the protocol conversion methods to convert and save the value
     else if([[self valueForKey:key] respondsToSelector:@selector(toDbFormattedString)])
     {
         [self serializeObject:[[self valueForKey:key]toDbFormattedString] withApiKey:renamedKey fromKey:key toDictionary:dict];
     }
-    
+
     //otherwise just set it
     else if([self valueForKey:key])
     {
         [self serializeObject:[self valueForKey:key] withApiKey:renamedKey fromKey:key toDictionary:dict];
     }
-    
+
     //handle setting serializing nulls
     else if([self valueForKey:key] == nil || [self valueForKey:key] == [NSNull null])
     {
@@ -312,12 +312,12 @@ static bool _serializeNullsByDefault;
 //this exists so that a subclass might override this and specify a new key or perform some custom action.
 -(void)serializeObject:(NSObject*)object withApiKey:(NSString*)apiKey fromKey:(NSString*)objectKey toDictionary:(NSMutableDictionary*)dictionary
 {
-    
+
     if(object == nil)
     {
         object = [NSNull null];
     }
-    
+
     @try{
         [dictionary setObject:object forKey:apiKey];
     }
@@ -333,18 +333,18 @@ static bool _serializeNullsByDefault;
  */
 - (NSData*)toJSONData
 {
-    
+
     NSDictionary * dict = [self toDictionary];
-    
+
     NSError *error = nil;
     NSData *json;
-    
+
     // Dictionary convertable to JSON ?
     if ([NSJSONSerialization isValidJSONObject:dict])
     {
         // Serialize the dictionary
         json = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-        
+
 //        // If no errors, let's view the JSON
 //        if (json != nil && error == nil)
 //        {
@@ -353,7 +353,7 @@ static bool _serializeNullsByDefault;
 //            NSLog(@"JSON: %@", jsonString);
 //        }
     }
-    
+
     return json;
 }
 
@@ -365,16 +365,16 @@ static bool _serializeNullsByDefault;
     {
         [dictArray addObject:[object toDictionary]];
     }
-    
+
     NSError *error = nil;
     NSData *json;
-    
+
     // Dictionary convertable to JSON ?
     if ([NSJSONSerialization isValidJSONObject:dictArray])
     {
         // Serialize the dictionary
         json = [NSJSONSerialization dataWithJSONObject:dictArray options:NSJSONWritingPrettyPrinted error:&error];
-        
+
         // If no errors, let's view the JSON
 //        if (json != nil && error == nil)
 //        {
@@ -382,7 +382,7 @@ static bool _serializeNullsByDefault;
 //            NSLog(@"JSON: %@", jsonString);
 //        }
     }
-    
+
     return json;
 }
 
@@ -395,7 +395,7 @@ static bool _serializeNullsByDefault;
         NSArray * array = (NSArray*)deserialized;
         return [self arrayForJsonArray:array ofClass:[self class]];
     }
-    
+
     return nil;
 }
 
@@ -409,7 +409,7 @@ static bool _serializeNullsByDefault;
 {
     @try{
         QwikJson* object = [[[self class] alloc] init];
-    
+
         for(NSString * key in inputDictionary.allKeys)
         {
             [object writeObjectFrom:inputDictionary forKey:key toProperty:key];
@@ -429,7 +429,7 @@ static bool _serializeNullsByDefault;
  */
 -(void)writeObjectFrom:(NSDictionary*)inputDictionary forKey:(NSString*)key toProperty:(NSString*)property
 {
-    
+
     //see if we need to rename our key
     NSDictionary * nameMappings = [[self class]apiToObjectMapping];
     NSString * renamedKey = property;
@@ -437,14 +437,14 @@ static bool _serializeNullsByDefault;
     {
         renamedKey = [nameMappings valueForKey:key];
     }
-    
+
     //determine the type of object we are going to be setting
     Class objectClass = [[self class] classForKey:renamedKey];
-    
+
     @try {
-        
+
         //NSObject * value = [inputDictionary objectForKey:key];
-        
+
         //if this is a dictionary it is a foreign key associated object
         //so parse that object and then set it
         if(objectClass != nil && [[inputDictionary objectForKey:key]isKindOfClass:[NSDictionary class]])
@@ -452,7 +452,7 @@ static bool _serializeNullsByDefault;
             QwikJson * subObject = [objectClass objectFromDictionary:[inputDictionary objectForKey:key]];
             [self setValue:subObject forKey:renamedKey];
         }
-        
+
         //if this is an array then parse that object array and set it
         else if(objectClass != nil && [[inputDictionary objectForKey:key]isKindOfClass:[NSArray class]])
         {
@@ -460,7 +460,7 @@ static bool _serializeNullsByDefault;
             NSArray * objectArray = [[self class] arrayForJsonArray:jsonArray ofClass:objectClass];
             [self setValue:objectArray forKey:renamedKey];
         }
-        
+
         //if this is a specific dbField type then parse this using the dbField parsing protocol
         else if(objectClass != nil && [objectClass respondsToSelector:@selector(objectFromDbString:)] && [inputDictionary objectForKey:key] != [NSNull null])
         {
@@ -470,7 +470,7 @@ static bool _serializeNullsByDefault;
                 [self setValue:valueObject forKey:renamedKey];
             }
         }
-        
+
         //if this is supposed to be an NSString, but the api is returning it as an NSNumber, convert it to a string
         //this happens in the case of the id field
         else if(objectClass == [NSString class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSNumber class]])
@@ -478,7 +478,7 @@ static bool _serializeNullsByDefault;
             NSNumber * idNumber = [inputDictionary valueForKey:key];
             [self setValue:[idNumber stringValue] forKey:renamedKey];
         }
-        
+
         //if this is supposed to be an NSNumber, but the api is returning it as an NSString, convert it to a NSNumber
         else if(objectClass == [NSNumber class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSString class]])
         {
@@ -487,7 +487,7 @@ static bool _serializeNullsByDefault;
             f.numberStyle = NSNumberFormatterDecimalStyle;
             [self setValue:[f numberFromString:idString]  forKey:renamedKey];
         }
-        
+
         //if this is supposed to be an NSDecimalNumber, but the api is returning it as an NSString, convert it to a NSDecimalNumber
         else if(objectClass == [NSDecimalNumber class] && [[inputDictionary valueForKey:key] isKindOfClass:[NSString class]])
         {
@@ -499,7 +499,7 @@ static bool _serializeNullsByDefault;
             NSNumber * idNumber = [inputDictionary valueForKey:key];
             [self setValue:[[NSDecimalNumber alloc] initWithDecimal:[idNumber decimalValue]]  forKey:renamedKey];
         }
-        
+
         //otherwise, this is just a standard setter method, so set the value
         else{
             if(![[inputDictionary valueForKey:key] isEqual:[NSNull null]])
@@ -511,7 +511,7 @@ static bool _serializeNullsByDefault;
                 [self setValue:nil forKey:renamedKey];
             }
         }
-        
+
     }
     @catch (NSException *exception) {
         //swallow the exception. No need for tons of logging. This will happen if the property doesn't have a setter,
@@ -530,21 +530,21 @@ static bool _serializeNullsByDefault;
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:objectNotation
                                                          options:0
                                                            error:&localError];
-    
+
     if (localError != nil)
     {
         *error = localError;
         return nil;
     }
-    
+
     QwikJson* object = [[self class] objectFromDictionary:dict];
-    
+
     if (localError != nil)
     {
         *error = localError;
         return nil;
     }
-    
+
     return object;
 }
 
@@ -556,7 +556,7 @@ static bool _serializeNullsByDefault;
 +(NSArray*)arrayForJsonArray:(NSArray*)inputArray ofClass:(Class)parseClass
 {
     NSMutableArray * array = [NSMutableArray array];
-    
+
     for(NSObject * object in inputArray)
     {
         if([object isKindOfClass:[NSDictionary class]])
@@ -602,7 +602,7 @@ static bool _serializeNullsByDefault;
         return YES;
     if (!other || ![other isKindOfClass:[self class]])
         return NO;
-    
+
     SEL selector = NSSelectorFromString(@"id");
     if([self respondsToSelector:selector] && [other respondsToSelector:selector])
     {
@@ -639,7 +639,7 @@ static NSArray<NSString*>* alternateDateFormats = nil;
     [formatter setDateFormat:dbDateTimeFormat];
     //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSDate * date = [formatter dateFromString:dbString];
-    
+
     //if the primary formatter failed, try alternate formats
     if(date == nil && alternateDateFormats)
     {
@@ -653,7 +653,7 @@ static NSArray<NSString*>* alternateDateFormats = nil;
             }
         }
     }
-    
+
     DBDateTime * dbDate = [[DBDateTime alloc]initWithDate:date];
     return dbDate;
 }
@@ -685,17 +685,17 @@ static NSArray<NSString*>* alternateDateFormats = nil;
 {
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-    
+
     NSDateFormatter * timeFormatter = [[NSDateFormatter alloc]init];
     [timeFormatter setDateFormat:@"HH:mm:ss"];
-    
+
     NSString * combinedString = [NSString stringWithFormat:@"%@ %@",[dateFormatter stringFromDate:dbDate.date],[timeFormatter stringFromDate:dbTime.date]];
-    
+
     NSDateFormatter * combinedFormatter = [[NSDateFormatter alloc]init];
     [combinedFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
-    
+
     NSDate * combinedDate = [combinedFormatter dateFromString:combinedString];
-    
+
     return [self initWithDate:combinedDate];
 }
 
@@ -721,7 +721,7 @@ static NSString * dbDateFormat = @"yyyy-MM-dd";
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:dbDateFormat];
     NSDate * date = [formatter dateFromString:dbString];
-    
+
     //if the primary formatter failed, try alternate formats
     if(date == nil && alternateDateFormats)
     {
@@ -735,7 +735,7 @@ static NSString * dbDateFormat = @"yyyy-MM-dd";
             }
         }
     }
-    
+
     DBDate * dbDate = [[DBDate alloc]initWithDate:date];
     return dbDate;
 }
@@ -783,7 +783,7 @@ static NSString * dbTimeFormat = @"HH:mm:ss";
     [formatter setDateFormat:dbTimeFormat];
     //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSDate * date = [formatter dateFromString:dbString];
-    
+
     //if the primary formatter failed, try alternate formats
     if(date == nil && alternateDateFormats)
     {
@@ -797,7 +797,7 @@ static NSString * dbTimeFormat = @"HH:mm:ss";
             }
         }
     }
-    
+
     DBTime * dbDate = [[DBTime alloc]initWithDate:date];
     return dbDate;
 }
@@ -840,7 +840,7 @@ static float _multiplier = 0.0f;
 {
     if ((dbString == nil) || ([dbString isEqual:[NSNull null]])) return nil;
     NSDate * date = [[NSDate alloc] initWithTimeIntervalSince1970:[dbString doubleValue] / _multiplier];
-    
+
     //convert to local time
     //NSTimeZone *tz = [NSTimeZone defaultTimeZone];
     //NSInteger seconds = [tz secondsFromGMTForDate: date];
@@ -853,7 +853,7 @@ static float _multiplier = 0.0f;
     //NSTimeZone *tz = [NSTimeZone defaultTimeZone];
     //NSInteger seconds = -[tz secondsFromGMTForDate: self.date];
     //NSDate * utcDate = [NSDate dateWithTimeInterval: seconds sinceDate: self.date];
-    
+
     NSTimeInterval interval = [self.date timeIntervalSince1970];//[utcDate timeIntervalSince1970];
     NSString *string = [NSString stringWithFormat:@"%.0f", interval * _multiplier];
     return string;
@@ -883,7 +883,7 @@ static float _multiplier = 0.0f;
 {
     if ((dbString == nil) || ([dbString isEqual:[NSNull null]])) return nil;
     NSDate * date = [[NSDate alloc] initWithTimeIntervalSince1970:[dbString doubleValue] / 1000];
-    
+
     //convert to local time
     //NSTimeZone *tz = [NSTimeZone defaultTimeZone];
     //NSInteger seconds = [tz secondsFromGMTForDate: date];
@@ -896,7 +896,7 @@ static float _multiplier = 0.0f;
     //NSTimeZone *tz = [NSTimeZone defaultTimeZone];
     //NSInteger seconds = -[tz secondsFromGMTForDate: self.date];
     //NSDate * utcDate = [NSDate dateWithTimeInterval: seconds sinceDate: self.date];
-    
+
     NSTimeInterval interval = [self.date timeIntervalSince1970];//[utcDate timeIntervalSince1970];
     NSString *string = [NSString stringWithFormat:@"%.0f", interval * 1000];
     return string;
