@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07ACFD5070201B2AFB141F9B6306E780 /* QwikJsonManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 4885764B62ACAB922F122888F1EFC0F8 /* QwikJsonManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E4BD96A70A8FA02D877FEB42325F938 /* Pods-QwikJson_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ACF6F27FB01ECDEE2FD039E69D1FFD5 /* Pods-QwikJson_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4A56EE02B8303C68C11A3AA1BE74E966 /* NSArrayDictionary+QJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 94EAFDBA0BB15730D6ADC8341F3B7455 /* NSArrayDictionary+QJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4C6500475869C047AD6BD998233B5059 /* QwikJson-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 353ADD1DB86337BB617ED29EFC8D59EC /* QwikJson-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5220266884960A6A0544BEFF041AB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0470C39B9B9CF8132E6546C4B8F6AD86 /* Foundation.framework */; };
 		71775AE961768FC87025116117299EF9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4527621134132EB3E3699ACD0149FEBB /* CoreData.framework */; };
-		796ABAFD9BF4E27B5783E429D24A1D41 /* QwikJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 682DBC60ACE95685073C37DEB6E6CCE2 /* QwikJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7AE8DE7D5CC894449F9C1FF3D4BF5F8B /* QwikJsonManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8E7573313107382B35AF0F3E9E47DE /* QwikJsonManagedObject.m */; };
-		9114D779F39B96BB93FD6C42D1D0CF66 /* NSArrayDictionary+QJson.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D1BCFB14395EBAA98D59E8CA4C3CD5 /* NSArrayDictionary+QJson.m */; };
+		7AE8DE7D5CC894449F9C1FF3D4BF5F8B /* QwikJsonManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 257701F89EAF12A73A83F32BD6738046 /* QwikJsonManagedObject.m */; };
+		9114D779F39B96BB93FD6C42D1D0CF66 /* NSArrayDictionary+QJson.m in Sources */ = {isa = PBXBuildFile; fileRef = B2128C944909A5FD051BB93C87F19544 /* NSArrayDictionary+QJson.m */; };
+		A3FCB7A1F72303B56C266996A31874B7 /* QwikJson.h in Headers */ = {isa = PBXBuildFile; fileRef = DB235E95302EF441B212AD709742F3BA /* QwikJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7B55C8F89E21613B04579780F0125B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0470C39B9B9CF8132E6546C4B8F6AD86 /* Foundation.framework */; };
 		D4BD5B6BD8AA2E24B25242170530DE2E /* Pods-QwikJson_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5685958E58374E7B94DFCA50F636A161 /* Pods-QwikJson_Example-dummy.m */; };
-		FB88C9AD1457FD0AD98C3DAEDC5F03B4 /* QwikJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BF374360FFA8C03BC54F4C6BDFF10C2E /* QwikJson.m */; };
-		FFB9A6CB8FB3302FA4ABB084C1CBFB6F /* QwikJson-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C68211D9426E4C5A0FC2448DB60BB /* QwikJson-dummy.m */; };
+		DD639ADD0194D0565AA6BCDBBB2C33DB /* NSArrayDictionary+QJson.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CD617075A896DB325F720EEE9F238D6 /* NSArrayDictionary+QJson.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E605ACA5052C2DFFB94BE15C20146020 /* QwikJson-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4169ED0E06A7BAE980BF93FFB4673BDC /* QwikJson-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E928680B14F9F83CE1A46D4F3CD3A6A4 /* QwikJsonManagedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2145DF0652EC1B54E97D2A56D98B01CF /* QwikJsonManagedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB88C9AD1457FD0AD98C3DAEDC5F03B4 /* QwikJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F07E78D7066D14A697659EBDF5A8017 /* QwikJson.m */; };
+		FFB9A6CB8FB3302FA4ABB084C1CBFB6F /* QwikJson-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEFDCFC6369B11FF7F6B8597A81FEA /* QwikJson-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6CCD8F3F865283D8CABC6491E0E1B2F8 /* PBXContainerItemProxy */ = {
+		5AD3FDB51D424F179DC75B5706BCC0BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -33,36 +33,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0251111944129F1DBD2369A9C60047DB /* QwikJson-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "QwikJson-Info.plist"; sourceTree = "<group>"; };
 		0470C39B9B9CF8132E6546C4B8F6AD86 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		0880D2DD09F2C5EB26AECB1F45CDF69A /* QwikJson.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QwikJson.modulemap; sourceTree = "<group>"; };
-		118C68211D9426E4C5A0FC2448DB60BB /* QwikJson-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QwikJson-dummy.m"; sourceTree = "<group>"; };
+		1F07E78D7066D14A697659EBDF5A8017 /* QwikJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QwikJson.m; path = Pod/Classes/QwikJson.m; sourceTree = "<group>"; };
+		2145DF0652EC1B54E97D2A56D98B01CF /* QwikJsonManagedObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QwikJsonManagedObject.h; sourceTree = "<group>"; };
+		2538E0CC5050936DBCB1106988718B35 /* QwikJson-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QwikJson-prefix.pch"; sourceTree = "<group>"; };
+		257701F89EAF12A73A83F32BD6738046 /* QwikJsonManagedObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QwikJsonManagedObject.m; path = Pod/Classes/QwikJsonManagedObject.m; sourceTree = "<group>"; };
 		2C0ECD49305F3751F8EFC4A349B8C13C /* Pods-QwikJson_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QwikJson_Example-frameworks.sh"; sourceTree = "<group>"; };
 		2C547283D52AE0A8F4F4701590198479 /* Pods-QwikJson_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QwikJson_Example.release.xcconfig"; sourceTree = "<group>"; };
-		353ADD1DB86337BB617ED29EFC8D59EC /* QwikJson-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QwikJson-umbrella.h"; sourceTree = "<group>"; };
-		396AB4933355DD67D38FF9D52BEF0CBE /* QwikJson-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "QwikJson-Info.plist"; sourceTree = "<group>"; };
 		3A10485E6F325E7721CDD9FB206ADCB9 /* Pods-QwikJson_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QwikJson_Example.modulemap"; sourceTree = "<group>"; };
-		42F41273806355C915CF56CFDB3CBD1B /* QwikJson.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QwikJson.debug.xcconfig; sourceTree = "<group>"; };
+		4169ED0E06A7BAE980BF93FFB4673BDC /* QwikJson-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QwikJson-umbrella.h"; sourceTree = "<group>"; };
+		41AEFDCFC6369B11FF7F6B8597A81FEA /* QwikJson-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QwikJson-dummy.m"; sourceTree = "<group>"; };
 		4527621134132EB3E3699ACD0149FEBB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
-		4885764B62ACAB922F122888F1EFC0F8 /* QwikJsonManagedObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QwikJsonManagedObject.h; path = include/QwikJsonManagedObject.h; sourceTree = "<group>"; };
 		4DEEDEB72E1CE3D884B11B96F1E4B49A /* Pods-QwikJson_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QwikJson_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		518C39B826E75B1C14B89448C93F4932 /* Pods-QwikJson_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QwikJson_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		5685958E58374E7B94DFCA50F636A161 /* Pods-QwikJson_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QwikJson_Example-dummy.m"; sourceTree = "<group>"; };
-		682DBC60ACE95685073C37DEB6E6CCE2 /* QwikJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QwikJson.h; path = include/QwikJson.h; sourceTree = "<group>"; };
 		7ACF6F27FB01ECDEE2FD039E69D1FFD5 /* Pods-QwikJson_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QwikJson_Example-umbrella.h"; sourceTree = "<group>"; };
 		7CCA878379E215BE12A8EA3A967A3C55 /* Pods-QwikJson_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QwikJson_Example-Info.plist"; sourceTree = "<group>"; };
-		8C01F31A5AFDE342F9D0CF9E216BDEBD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		94EAFDBA0BB15730D6ADC8341F3B7455 /* NSArrayDictionary+QJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArrayDictionary+QJson.h"; path = "include/NSArrayDictionary+QJson.h"; sourceTree = "<group>"; };
+		9CD617075A896DB325F720EEE9F238D6 /* NSArrayDictionary+QJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArrayDictionary+QJson.h"; sourceTree = "<group>"; };
+		9D2009B79FDD6844C41AB9D20B1374E1 /* QwikJson.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QwikJson.release.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AB8E7573313107382B35AF0F3E9E47DE /* QwikJsonManagedObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QwikJsonManagedObject.m; path = Pod/Classes/QwikJsonManagedObject.m; sourceTree = "<group>"; };
-		BF374360FFA8C03BC54F4C6BDFF10C2E /* QwikJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QwikJson.m; path = Pod/Classes/QwikJson.m; sourceTree = "<group>"; };
-		C6F592B8F05C0A885F04E2B77AFA7D55 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		A10BFAC1AA4FD528DE9673A6C75124ED /* QwikJson.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QwikJson.modulemap; sourceTree = "<group>"; };
+		A3A8711142A261CB1490C1F7AB4FFE86 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B2128C944909A5FD051BB93C87F19544 /* NSArrayDictionary+QJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArrayDictionary+QJson.m"; path = "Pod/Classes/NSArrayDictionary+QJson.m"; sourceTree = "<group>"; };
+		C3AC1F1F6F9E0D3A730C947BF377DF17 /* QwikJson.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QwikJson.debug.xcconfig; sourceTree = "<group>"; };
 		C9E673542A0595E300BF3BCDD1243AE4 /* QwikJson */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = QwikJson; path = QwikJson.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF9B1A06C43668CA4EFEFA7E6A515058 /* QwikJson.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = QwikJson.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D6FDE294984ED15FB0D8D48FEECC4F92 /* Pods-QwikJson_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QwikJson_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		D8D1BCFB14395EBAA98D59E8CA4C3CD5 /* NSArrayDictionary+QJson.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArrayDictionary+QJson.m"; path = "Pod/Classes/NSArrayDictionary+QJson.m"; sourceTree = "<group>"; };
-		D8EA27483468E21C86F82A39B830EE5A /* QwikJson.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QwikJson.release.xcconfig; sourceTree = "<group>"; };
-		F06A2632C6B7E2341B1D1F079E919B2E /* QwikJson.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = QwikJson.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DB235E95302EF441B212AD709742F3BA /* QwikJson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QwikJson.h; sourceTree = "<group>"; };
+		E8CEAE5D80A8A6B7F0D7F4D611FD853C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		FD366F8906962C3668AA9879D108A154 /* Pods-QwikJson_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-QwikJson_Example"; path = Pods_QwikJson_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FDBCC0A3C08B3993891495C828FEC29D /* QwikJson-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QwikJson-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,43 +94,26 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		0C59062444C508C2798B29980B07AF01 /* QwikJson */ = {
+			isa = PBXGroup;
+			children = (
+				B2128C944909A5FD051BB93C87F19544 /* NSArrayDictionary+QJson.m */,
+				1F07E78D7066D14A697659EBDF5A8017 /* QwikJson.m */,
+				257701F89EAF12A73A83F32BD6738046 /* QwikJsonManagedObject.m */,
+				F4E83A10E77BE18EC1310B6D75563A10 /* include */,
+				B24CE9F33CF8FAA52F6866BCB27C9066 /* Pod */,
+				717E85754E160E24707A1E36C921ADB5 /* Support Files */,
+			);
+			name = QwikJson;
+			path = ../..;
+			sourceTree = "<group>";
+		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				C3885F53A89BDCBB72A8324368A9A4EF /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		233D36BA738E5C84E1A3748C226EA9C2 /* QwikJson */ = {
-			isa = PBXGroup;
-			children = (
-				94EAFDBA0BB15730D6ADC8341F3B7455 /* NSArrayDictionary+QJson.h */,
-				D8D1BCFB14395EBAA98D59E8CA4C3CD5 /* NSArrayDictionary+QJson.m */,
-				682DBC60ACE95685073C37DEB6E6CCE2 /* QwikJson.h */,
-				BF374360FFA8C03BC54F4C6BDFF10C2E /* QwikJson.m */,
-				4885764B62ACAB922F122888F1EFC0F8 /* QwikJsonManagedObject.h */,
-				AB8E7573313107382B35AF0F3E9E47DE /* QwikJsonManagedObject.m */,
-				7300588F103E13754558FA191490DFFF /* Pod */,
-				25F9304B182C7EB695661A5CA124A0A7 /* Support Files */,
-			);
-			name = QwikJson;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		25F9304B182C7EB695661A5CA124A0A7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0880D2DD09F2C5EB26AECB1F45CDF69A /* QwikJson.modulemap */,
-				118C68211D9426E4C5A0FC2448DB60BB /* QwikJson-dummy.m */,
-				396AB4933355DD67D38FF9D52BEF0CBE /* QwikJson-Info.plist */,
-				FDBCC0A3C08B3993891495C828FEC29D /* QwikJson-prefix.pch */,
-				353ADD1DB86337BB617ED29EFC8D59EC /* QwikJson-umbrella.h */,
-				42F41273806355C915CF56CFDB3CBD1B /* QwikJson.debug.xcconfig */,
-				D8EA27483468E21C86F82A39B830EE5A /* QwikJson.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/QwikJson";
 			sourceTree = "<group>";
 		};
 		3B9E4870C9DF8EEFE6F117BF01E00496 /* Pods-QwikJson_Example */ = {
@@ -150,6 +133,21 @@
 			path = "Target Support Files/Pods-QwikJson_Example";
 			sourceTree = "<group>";
 		};
+		717E85754E160E24707A1E36C921ADB5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A10BFAC1AA4FD528DE9673A6C75124ED /* QwikJson.modulemap */,
+				41AEFDCFC6369B11FF7F6B8597A81FEA /* QwikJson-dummy.m */,
+				0251111944129F1DBD2369A9C60047DB /* QwikJson-Info.plist */,
+				2538E0CC5050936DBCB1106988718B35 /* QwikJson-prefix.pch */,
+				4169ED0E06A7BAE980BF93FFB4673BDC /* QwikJson-umbrella.h */,
+				C3AC1F1F6F9E0D3A730C947BF377DF17 /* QwikJson.debug.xcconfig */,
+				9D2009B79FDD6844C41AB9D20B1374E1 /* QwikJson.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/QwikJson";
+			sourceTree = "<group>";
+		};
 		72ECE45D25BE1B5417B7DF7FE8A9F673 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,22 +157,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7300588F103E13754558FA191490DFFF /* Pod */ = {
+		93A3839F9F1D21DF669CB54FD29D21E0 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8C01F31A5AFDE342F9D0CF9E216BDEBD /* LICENSE */,
-				F06A2632C6B7E2341B1D1F079E919B2E /* QwikJson.podspec */,
-				C6F592B8F05C0A885F04E2B77AFA7D55 /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		986C30ECF447E54C49D3278B310EF8C1 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				233D36BA738E5C84E1A3748C226EA9C2 /* QwikJson */,
+				0C59062444C508C2798B29980B07AF01 /* QwikJson */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		B24CE9F33CF8FAA52F6866BCB27C9066 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				A3A8711142A261CB1490C1F7AB4FFE86 /* LICENSE */,
+				CF9B1A06C43668CA4EFEFA7E6A515058 /* QwikJson.podspec */,
+				E8CEAE5D80A8A6B7F0D7F4D611FD853C /* README.md */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		C3885F53A89BDCBB72A8324368A9A4EF /* iOS */ = {
@@ -190,24 +188,35 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				986C30ECF447E54C49D3278B310EF8C1 /* Development Pods */,
+				93A3839F9F1D21DF669CB54FD29D21E0 /* Development Pods */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
 				72ECE45D25BE1B5417B7DF7FE8A9F673 /* Products */,
 				038DCE6E1236F4F14E6C2DAA3E412974 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
+		F4E83A10E77BE18EC1310B6D75563A10 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				9CD617075A896DB325F720EEE9F238D6 /* NSArrayDictionary+QJson.h */,
+				DB235E95302EF441B212AD709742F3BA /* QwikJson.h */,
+				2145DF0652EC1B54E97D2A56D98B01CF /* QwikJsonManagedObject.h */,
+			);
+			name = include;
+			path = Pod/Classes/include;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		49B3CE84AFC37716D125AD48864BBC55 /* Headers */ = {
+		179FBB16D0BDF63F772495DED0527E13 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A56EE02B8303C68C11A3AA1BE74E966 /* NSArrayDictionary+QJson.h in Headers */,
-				796ABAFD9BF4E27B5783E429D24A1D41 /* QwikJson.h in Headers */,
-				4C6500475869C047AD6BD998233B5059 /* QwikJson-umbrella.h in Headers */,
-				07ACFD5070201B2AFB141F9B6306E780 /* QwikJsonManagedObject.h in Headers */,
+				DD639ADD0194D0565AA6BCDBBB2C33DB /* NSArrayDictionary+QJson.h in Headers */,
+				A3FCB7A1F72303B56C266996A31874B7 /* QwikJson.h in Headers */,
+				E605ACA5052C2DFFB94BE15C20146020 /* QwikJson-umbrella.h in Headers */,
+				E928680B14F9F83CE1A46D4F3CD3A6A4 /* QwikJsonManagedObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +243,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				3BDB44C78B0FB795C320E36C71FD7A9F /* PBXTargetDependency */,
+				DC70CC94C2BE8DC43C67DE7F00311ED5 /* PBXTargetDependency */,
 			);
 			name = "Pods-QwikJson_Example";
 			productName = Pods_QwikJson_Example;
@@ -245,7 +254,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F10BB04CCC7EB41AD3FDF2D0CA8AD02A /* Build configuration list for PBXNativeTarget "QwikJson" */;
 			buildPhases = (
-				49B3CE84AFC37716D125AD48864BBC55 /* Headers */,
+				179FBB16D0BDF63F772495DED0527E13 /* Headers */,
 				01091A33AE030E728BBB696AA47CBC57 /* Sources */,
 				A22083E429333700470D8E8FC47BECB7 /* Frameworks */,
 				23C209E1798C4A8F60664FD41B71492C /* Resources */,
@@ -327,11 +336,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3BDB44C78B0FB795C320E36C71FD7A9F /* PBXTargetDependency */ = {
+		DC70CC94C2BE8DC43C67DE7F00311ED5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = QwikJson;
 			target = 7B2667A9EE47B3CD2F17F87660A0D308 /* QwikJson */;
-			targetProxy = 6CCD8F3F865283D8CABC6491E0E1B2F8 /* PBXContainerItemProxy */;
+			targetProxy = 5AD3FDB51D424F179DC75B5706BCC0BB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -466,7 +475,7 @@
 		};
 		9FA0EC109D02A28A002482393D134860 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42F41273806355C915CF56CFDB3CBD1B /* QwikJson.debug.xcconfig */;
+			baseConfigurationReference = C3AC1F1F6F9E0D3A730C947BF377DF17 /* QwikJson.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -538,7 +547,7 @@
 		};
 		D7E00B34305D092D47AB8FE67516DA67 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8EA27483468E21C86F82A39B830EE5A /* QwikJson.release.xcconfig */;
+			baseConfigurationReference = 9D2009B79FDD6844C41AB9D20B1374E1 /* QwikJson.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
