@@ -1,5 +1,5 @@
 PODS:
-  - QwikJson (0.3.0)
+  - QwikJson (1.0.26)
 
 DEPENDENCIES:
   - QwikJson (from `../`)
@@ -9,6 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  QwikJson: 78cce1130fd693246bdfd313bc6f8b42d740276f
+  QwikJson: ce910abe48c2f1d09b5f29ac86dc2b74545eecf9
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 0acacff61a4aa3ad641d4d2a288af55c6b11ccde
+
+COCOAPODS: 1.12.1

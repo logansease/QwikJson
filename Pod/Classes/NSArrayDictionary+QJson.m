@@ -6,7 +6,7 @@
 //
 //
 
-#import "../include/NSArrayDictionary+QJson.h"
+#import "NSArrayDictionary+QJson.h"
 
 @implementation NSDictionary (QJson)
 -(NSString*)toJsonString

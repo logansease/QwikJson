@@ -14,4 +14,5 @@
 @property(nonatomic,strong)NSString * name;
 @property(nonatomic,strong)NSArray * menus;
 @property(nonatomic,strong)DBTimeStamp * createdAt;
+@property(nonatomic,strong)DBDateTime * updatedAt;
 @end

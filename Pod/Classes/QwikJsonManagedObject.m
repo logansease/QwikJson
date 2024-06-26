@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Qonceptual. All rights reserved.
 //
 
-#import "../include/QwikJsonManagedObject.h"
+#import "QwikJsonManagedObject.h"
 #import <objc/runtime.h>
 
 

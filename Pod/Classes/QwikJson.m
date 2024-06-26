@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Qonceptual. All rights reserved.
 //
 
-#import "../include/QwikJson.h"
+#import "QwikJson.h"
 #import <objc/runtime.h>
 
 
@@ -637,6 +637,8 @@ static NSArray<NSString*>* alternateDateFormats = nil;
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:dbDateTimeFormat];
+    formatter.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    formatter.locale = [NSLocale localeWithLocaleIdentifier: @"en_US_POSIX"];
     //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSDate * date = [formatter dateFromString:dbString];
 
@@ -661,7 +663,9 @@ static NSArray<NSString*>* alternateDateFormats = nil;
 {
     NSDateFormatter * formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:dbDateTimeFormat];
-    //[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    formatter.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    formatter.locale = [NSLocale localeWithLocaleIdentifier: @"en_US_POSIX"];
+    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     return [formatter stringFromDate:self.date];
 }
 -(NSString*)displayString
@@ -685,15 +689,21 @@ static NSArray<NSString*>* alternateDateFormats = nil;
 {
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    dateFormatter.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier: @"en_US_POSIX"];
 
     NSDateFormatter * timeFormatter = [[NSDateFormatter alloc]init];
     [timeFormatter setDateFormat:@"HH:mm:ss"];
+    timeFormatter.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    timeFormatter.locale = [NSLocale localeWithLocaleIdentifier: @"en_US_POSIX"];
 
     NSString * combinedString = [NSString stringWithFormat:@"%@ %@",[dateFormatter stringFromDate:dbDate.date],[timeFormatter stringFromDate:dbTime.date]];
 
     NSDateFormatter * combinedFormatter = [[NSDateFormatter alloc]init];
     [combinedFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
-
+    combinedFormatter.calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    combinedFormatter.locale = [NSLocale localeWithLocaleIdentifier: @"en_US_POSIX"];
+    
     NSDate * combinedDate = [combinedFormatter dateFromString:combinedString];
 
     return [self initWithDate:combinedDate];
@@ -829,7 +839,7 @@ static NSString * dbTimeFormat = @"HH:mm:ss";
 //this class represents a time stamp formatted like 14128309481 in UTC
 @implementation DBTimeStamp
 
-static float _multiplier = 0.0f;
+static float _multiplier = 1.0f;
 
 +(void)setTimeStampMultiplier:(float)multiplier
 {

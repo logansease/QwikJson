@@ -65,6 +65,7 @@
     Restaurant * rest = [Restaurant objectWithId:@"1"];
     rest.name = @"Testaurant";
     rest.createdAt = [[DBTimeStamp alloc]initWithDate:[NSDate date]];
+    rest.updatedAt = [[DBDateTime alloc]initWithDate:[NSDate date]];
     self.restaurant= rest;
     
     Menu * menu = [Menu objectWithId:@"2"];
