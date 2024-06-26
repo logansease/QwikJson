@@ -16,7 +16,8 @@ let package = Package(
     targets: [
         .target(
             name: "QwikJson",
-            path: "Pod/Classes"
+            path: "Pod/Classes",
+            publicHeadersPath: "Pod/Classes"
         )
     ]
 )

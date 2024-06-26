@@ -86,16 +86,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		003CCC002C2C70A400F91D66 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				238AAD1C49871EB4DB3C9337CC3692ED /* NSArrayDictionary+QJson.h */,
-				30E7544DAE9B5E32318A98FA9D138605 /* QwikJsonManagedObject.h */,
-				A4A5E92B632D75D1A4992BFDC515662E /* QwikJson.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
 		038DCE6E1236F4F14E6C2DAA3E412974 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,10 +156,12 @@
 		75A836E994E30E18346F16A27B2CDA7C /* QwikJson */ = {
 			isa = PBXGroup;
 			children = (
-				003CCC002C2C70A400F91D66 /* include */,
 				3160E0DA1AA68C46A5FEE21F8955BDB0 /* NSArrayDictionary+QJson.m */,
 				BCA4AF3CD94E799EFD0CCA807C2628D1 /* QwikJson.m */,
 				09173E8794C98FDB3F2E9D460098DA64 /* QwikJsonManagedObject.m */,
+				238AAD1C49871EB4DB3C9337CC3692ED /* NSArrayDictionary+QJson.h */,
+				30E7544DAE9B5E32318A98FA9D138605 /* QwikJsonManagedObject.h */,
+				A4A5E92B632D75D1A4992BFDC515662E /* QwikJson.h */,
 				281AAD3C1258076349135758B45B478E /* Pod */,
 				321744A67ACA19178A05A07E442285FC /* Support Files */,
 			);
